@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 6.1.1 (Python 3.9.6 on darwin)" generated="20231216 23:01:13.540" rpa="false" schemaversion="4">
+<suite id="s1" name="RBT 01 CallawayScore" source="/Users/cadensilvey/Developer/GitHub/Courses/Cally/RBT_TESTS/RBT_01_CallawayScore.robot">
+<test id="s1-t1" name="Test Golf Scoring" line="10">
+<kw name="Run Process" library="Process">
+<var>${result}</var>
+<arg>${python3 Executable}</arg>
+<arg>${Script Path}</arg>
+<arg>DressForLess</arg>
+<doc>Runs a process and waits for it to complete.</doc>
+<msg timestamp="20231216 23:01:13.555" level="INFO">Starting process:
+python3 /Users/cadensilvey/Developer/GitHub/Courses/Cally/callyScore.py DressForLess</msg>
+<msg timestamp="20231216 23:01:13.561" level="INFO">Waiting for process to complete.</msg>
+<msg timestamp="20231216 23:01:13.778" level="INFO">Process completed.</msg>
+<msg timestamp="20231216 23:01:13.778" level="INFO">${result} = &lt;result object with rc 0&gt;</msg>
+<status status="PASS" starttime="20231216 23:01:13.555" endtime="20231216 23:01:13.778"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>${result.stdout}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20231216 23:01:13.779" level="INFO">Front 9: 39
+Back 9: 43
+Total Score: 82
+Calloway Score: 73</msg>
+<status status="PASS" starttime="20231216 23:01:13.779" endtime="20231216 23:01:13.779"/>
+</kw>
+<kw name="Run Process" library="Process">
+<var>${result}</var>
+<arg>${python3 Executable}</arg>
+<arg>${Script Path}</arg>
+<arg>DriveNThriive</arg>
+<doc>Runs a process and waits for it to complete.</doc>
+<msg timestamp="20231216 23:01:13.780" level="INFO">Starting process:
+python3 /Users/cadensilvey/Developer/GitHub/Courses/Cally/callyScore.py DriveNThriive</msg>
+<msg timestamp="20231216 23:01:13.782" level="INFO">Waiting for process to complete.</msg>
+<msg timestamp="20231216 23:01:13.797" level="INFO">Process completed.</msg>
+<msg timestamp="20231216 23:01:13.797" level="INFO">${result} = &lt;result object with rc 0&gt;</msg>
+<status status="PASS" starttime="20231216 23:01:13.779" endtime="20231216 23:01:13.797"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>${result.stdout}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20231216 23:01:13.798" level="INFO">Front 9: 39
+Back 9: 43
+Total Score: 82
+Calloway Score: 73</msg>
+<status status="PASS" starttime="20231216 23:01:13.797" endtime="20231216 23:01:13.798"/>
+</kw>
+<kw name="Run Process" library="Process">
+<var>${result}</var>
+<arg>${python3 Executable}</arg>
+<arg>${Script Path}</arg>
+<arg>Osama</arg>
+<doc>Runs a process and waits for it to complete.</doc>
+<msg timestamp="20231216 23:01:13.798" level="INFO">Starting process:
+python3 /Users/cadensilvey/Developer/GitHub/Courses/Cally/callyScore.py Osama</msg>
+<msg timestamp="20231216 23:01:13.801" level="INFO">Waiting for process to complete.</msg>
+<msg timestamp="20231216 23:01:13.817" level="INFO">Process completed.</msg>
+<msg timestamp="20231216 23:01:13.817" level="INFO">${result} = &lt;result object with rc 0&gt;</msg>
+<status status="PASS" starttime="20231216 23:01:13.798" endtime="20231216 23:01:13.817"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>${result.stdout}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20231216 23:01:13.818" level="INFO">Front 9: 39
+Back 9: 43
+Total Score: 82
+Calloway Score: 73</msg>
+<status status="PASS" starttime="20231216 23:01:13.817" endtime="20231216 23:01:13.818"/>
+</kw>
+<kw name="Run Process" library="Process">
+<var>${result}</var>
+<arg>${python3 Executable}</arg>
+<arg>${Script Path}</arg>
+<arg>GG</arg>
+<doc>Runs a process and waits for it to complete.</doc>
+<msg timestamp="20231216 23:01:13.818" level="INFO">Starting process:
+python3 /Users/cadensilvey/Developer/GitHub/Courses/Cally/callyScore.py GG</msg>
+<msg timestamp="20231216 23:01:13.820" level="INFO">Waiting for process to complete.</msg>
+<msg timestamp="20231216 23:01:13.835" level="INFO">Process completed.</msg>
+<msg timestamp="20231216 23:01:13.835" level="INFO">${result} = &lt;result object with rc 0&gt;</msg>
+<status status="PASS" starttime="20231216 23:01:13.818" endtime="20231216 23:01:13.835"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>${result.stdout}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20231216 23:01:13.836" level="INFO">Front 9: 39
+Back 9: 43
+Total Score: 82
+Calloway Score: 73</msg>
+<status status="PASS" starttime="20231216 23:01:13.835" endtime="20231216 23:01:13.836"/>
+</kw>
+<kw name="Run Process" library="Process">
+<var>${result}</var>
+<arg>${python3 Executable}</arg>
+<arg>${Script Path}</arg>
+<arg>DaddysMoney</arg>
+<doc>Runs a process and waits for it to complete.</doc>
+<msg timestamp="20231216 23:01:13.836" level="INFO">Starting process:
+python3 /Users/cadensilvey/Developer/GitHub/Courses/Cally/callyScore.py DaddysMoney</msg>
+<msg timestamp="20231216 23:01:13.838" level="INFO">Waiting for process to complete.</msg>
+<msg timestamp="20231216 23:01:13.853" level="INFO">Process completed.</msg>
+<msg timestamp="20231216 23:01:13.853" level="INFO">${result} = &lt;result object with rc 0&gt;</msg>
+<status status="PASS" starttime="20231216 23:01:13.836" endtime="20231216 23:01:13.853"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>${result.stdout}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20231216 23:01:13.854" level="INFO">Front 9: 39
+Back 9: 43
+Total Score: 82
+Calloway Score: 73</msg>
+<status status="PASS" starttime="20231216 23:01:13.853" endtime="20231216 23:01:13.854"/>
+</kw>
+<doc>Calculate Callaway Score Based on hard coded data.</doc>
+<tag>golf</tag>
+<status status="PASS" starttime="20231216 23:01:13.554" endtime="20231216 23:01:13.854"/>
+</test>
+<status status="PASS" starttime="20231216 23:01:13.541" endtime="20231216 23:01:13.854"/>
+</suite>
+<statistics>
+<total>
+<stat pass="1" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+<stat pass="1" fail="0" skip="0">golf</stat>
+</tag>
+<suite>
+<stat pass="1" fail="0" skip="0" id="s1" name="RBT 01 CallawayScore">RBT 01 CallawayScore</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>
