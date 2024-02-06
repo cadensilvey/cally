@@ -28,12 +28,10 @@ class home(UserControl):
                                 padding = 10,                      
                                 alignment= alignment.center,
                             ),
-                            
-                            FilledTonalButton(
-                                
+                            FilledTonalButton(     
+                                # this page is taking the user to decide how they want to play.                            
                                 on_click= lambda _: self.page.go('/type'),
                                 text="Play Golf"
-                                # need to make new page here to play golf 
                             ),
                             
                         ]
