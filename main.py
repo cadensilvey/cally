@@ -15,3 +15,4 @@ def main(page: Page):
     page.go('/')
     
 app(target=main)
+

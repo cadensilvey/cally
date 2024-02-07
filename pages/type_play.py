@@ -1,5 +1,4 @@
 from flet import *
-from flet import Alignment
 
 
 class type_play(UserControl):
@@ -47,6 +46,6 @@ class type_play(UserControl):
                     )
                 )
             ]
-        )    
+        )  
     
         
