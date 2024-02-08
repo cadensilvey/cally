@@ -7,7 +7,6 @@ class home(UserControl):
 
     def build(self):
         return Column(
-            alignment=alignment.center,
             controls=[
                 Container(
                     height=1000,
