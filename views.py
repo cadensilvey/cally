@@ -4,37 +4,44 @@ from pages.type_play import type_play
 from pages.choose_course import choose_course
 from pages.create_course import create_course
 from pages.full_eighteen import full_eighteen
+# from pages.enter_scores import EnterScores
 
 def views_handler(page):
     return {
-        '/' :View(
+        '/': View(
             route='/',
             controls=[
                 home(page)
             ]
         ),
-        '/type' :View(
+        '/type': View(
             route='/type',
             controls=[
                 type_play(page)
             ]
         ),
-        '/choose' :View(
+        '/choose': View(
             route='/choose',
             controls=[
                 choose_course(page)
             ]
         ),
-        '/create' :View(
+        '/create': View(
             route='/create',
             controls=[
                 create_course(page)
             ]
         ),
-        '/18' :View(
+        '/18': View(
             route='/18',
             controls=[
                 full_eighteen(page)
             ]
         ),
+        # '/enter': View(
+        #     route='/enter',
+        #     controls=[
+        #         EnterScores(page, page.route_params.get('hole_pars', []))
+        #     ]
+        # ),
     }
