@@ -1,39 +1,51 @@
 from flet import *
 
 class home(UserControl):
-    def __init__(self,page):
+    def __init__(self, page):
         super().__init__()
         self.page = page
 
-
-
     def build(self):
-
         return Column(
+            alignment=alignment.center,
             controls=[
                 Container(
-                    height=1000, 
+                    height=1000,
                     width=1000,
-                    padding=10,
-                    margin=10,
-                    bgcolor='#fdebd3',
+                    padding=5,
+                    margin=5,
+                    bgcolor='#006400',  # Dark green color
                     content=Column(
                         controls=[
                             Container(
+                                content=
+                                    Icon(
+                                        name=icons.GOLF_COURSE,
+                                        color='#fdebd3',
+                                        size=50,
+                                    ),
+                                padding=50,
+                                alignment=alignment.center,  # Center the icon horizontally and vertically
+
+                            ),
+                            Container(
                                 content=Text(
                                     "Cally",
-                                    theme_style=TextThemeStyle.DISPLAY_MEDIUM
-                                ), 
-                                margin = 10,
-                                padding = 10,                      
-                                alignment= alignment.center,
+                                    theme_style=TextThemeStyle.DISPLAY_LARGE,
+                                    color='#fdebd3',
+                                ),
+                                margin=10,
+                                padding=40,
+                                alignment=alignment.center,
                             ),
-                            FilledTonalButton(     
-                                # this page is taking the user to decide how they want to play.                            
-                                on_click= lambda _: self.page.go('/type'),
-                                text="Play Golf"
+                            Container(
+                                content=ElevatedButton(
+                                    on_click=lambda _: self.page.go('/type'),
+                                    text="Play Golf",
+                                    bgcolor='#fdebd3',  # Teal color
+                                ),
+                                alignment=alignment.center,  # Center the button horizontally
                             ),
-                            
                         ]
                     )
                 )
