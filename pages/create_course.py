@@ -19,7 +19,7 @@ class create_course(UserControl):
         text_container = Container(
             content=Text(
                 "Create A Course",
-                theme_style=TextThemeStyle.DISPLAY_MEDIUM,
+                theme_style=TextThemeStyle.DISPLAY_SMALL,
                 color='#fdebd3',
             ),
             margin=10,
