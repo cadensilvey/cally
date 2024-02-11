@@ -8,8 +8,22 @@ class full_eighteen(UserControl):
         self.page = page
         self.current_hole = 1
         self.hole_pars = [0] * 18
+        self.total_par_text = Text()  # Initialize without setting the initial text
+        self.update_total_par_text()  # Set the initial text for the total par
 
     def build(self):
+        text_container = Container(
+            content=Text(
+                "Enter Course Details: ",
+                theme_style=TextThemeStyle.DISPLAY_SMALL,
+                color=colors.BLACK,
+            ),
+            margin=10,
+            padding=30,
+            alignment=alignment.center,
+        )
+
+
         return Column(
             controls=[
                 Container(
@@ -20,6 +34,7 @@ class full_eighteen(UserControl):
                     bgcolor='#fdebd3',
                     content=Column(
                         controls=[
+                            text_container,
                             Container(
                                 content=self.par_text_field,
                                 padding=10,
@@ -27,7 +42,12 @@ class full_eighteen(UserControl):
                             ),
                             ElevatedButton(
                                 "Next Hole",
-                                on_click=lambda _: self.next_hole()
+                                on_click=lambda _: self.next_hole(),
+                                # alignment=alignment.center
+                            ),
+                            Container(
+                                self.total_par_text,
+                                alignment=alignment.center,
                             ),
                         ]
                     )
@@ -41,12 +61,13 @@ class full_eighteen(UserControl):
             print("Par value is a digit")
             self.hole_pars[self.current_hole - 1] = value
             print(f"Par for Hole {self.current_hole}: {self.hole_pars[self.current_hole - 1]}")
+            self.update_total_par_text()  # Update total par when a new value is entered
         except ValueError:
             print("Please enter a valid number.")
 
     def next_hole(self):
         if 1 <= self.current_hole <= 18:
-            entered_value = self.par_text_field.value  # Get the entered value directly
+            entered_value = self.par_text_field.value
             self.update_par(entered_value)
             self.current_hole += 1
             self.update_text_field_label()
@@ -58,10 +79,6 @@ class full_eighteen(UserControl):
         print("Updating text field")
         self.par_text_field.label = f"Enter Par for Hole {self.current_hole}"
 
-# Create an instance of the page
-# page_instance = full_eighteen(None)
-
-# # Simulate the entry of values into the text field
-# for entered_value in ["3", "4", "5", "2", "3", "4", "2", "5", "3", "4", "3", "2", "4", "5", "3", "4", "2", "3"]:
-#     page_instance.par_text_field.set_value(entered_value)
-#     page_instance.next_hole()
+    def update_total_par_text(self):
+        # Update the total par Text control
+        self.total_par_text.value = f"Total Par: {sum(self.hole_pars)}"
