@@ -1,25 +1,6 @@
 import os
 import math
 
-#-------------------------------------scorecards ------------------------------------------------
-DressForLess =  [4, 4, 5, 3, 4, 3, 5, 5, 5, 3, 4, 5, 4, 4, 5, 3, 6, 4] ### 76 - Logan and Preston
-DriveNThriive = [4, 4, 6, 2, 4, 3, 5, 4, 4, 3, 3, 4, 4, 5, 4, 3, 4, 5] ### 71
-Osama = [4, 4, 7, 3, 6, 3, 3, 5, 4, 4, 6, 4, 5, 6, 5, 3, 5, 5] ### 82 - Jordan and Jared
-GG =            [5, 3, 5, 3, 5, 3, 6, 5, 4, 4, 4, 5, 5, 5, 3, 3, 4, 3] ### 75
-DaddysMoney =   [4, 3, 5, 2, 3, 3, 4, 4, 4, 3, 5, 4, 4, 4, 4, 3, 4, 4]
-
-#-------------------------------------scorecards ------------------------------------------------
-
-
-#------------------------------------------------------------------------------
-# Make this into a method? 
-#Ask for the scores for each hole and append to scorecard ---  THIS WORKS
-# hole = 1
-# while hole <= 18:
-#     userInput = int(input("Enter Score for Hole " + str(hole) + ": "))
-#     scorecard.append(userInput)
-#     hole += 1
-#-------------------------------------------------------------------------------
 
 # returns the last digit from the total score (ej: 82 - returns  2, 130 - returns 0)
 def intSplit(total):
@@ -171,7 +152,7 @@ def main(scorecard):
     # Maybe the mostortant piece of the puzzle right here
     totalScore = front9 + back9
 
-    # print(str(handicapAdjustment(totalScore)))
+    print(str(handicapAdjustment(totalScore)))
 
     # at or below par
     if totalScore < 72:
@@ -196,9 +177,6 @@ def main(scorecard):
         cally1 = totalScore - (initDeduction(totalScore, scorecard) + handicapAdjustment(totalScore))
         print("Calloway Score: " + str(cally1))
 
+    return cally1
 
-# main(DriveNThriive)
-main(Osama)
-# main(DressForLess)
-# main(GG)
-# main(DaddysMoney)
+    

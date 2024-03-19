@@ -1,5 +1,5 @@
 from flet import *
-from views import views_handler
+from views.views import views_handler
 
 def main(page: Page):
     pass
