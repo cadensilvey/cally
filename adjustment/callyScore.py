@@ -1,7 +1,6 @@
 import os
 import math
 
-
 # returns the last digit from the total score (ej: 82 - returns  2, 130 - returns 0)
 def intSplit(total):
     list_of_digits = [int(i) for i in str(total)]
@@ -159,15 +158,15 @@ def main(scorecard):
         print("Front 9: " + str(front9))
         print("Back 9: " + str(back9))
         print("Total Score: " + str(totalScore))
-        Cally = totalScore - (initDeduction(totalScore, scorecard))
-        print("Calloway Score: " + str(Cally))
+        cally1 = totalScore - (initDeduction(totalScore, scorecard))
+        print("Calloway Score: " + str(cally1))
     # in the tweener zone for calloway system
     elif totalScore > 72 and totalScore <= 75:
         print("Front 9: " + str(front9))
         print("Back 9: " + str(back9))
         print("Initial Score: " + str(totalScore))
-        Cally = totalScore - (initDeduction(totalScore, scorecard))
-        print("Calloway Score: " + str(Cally))
+        cally1 = totalScore - (initDeduction(totalScore, scorecard))
+        print("Calloway Score: " + str(cally1))
     elif totalScore > 75:
         print("Front 9: " + str(front9))
         print("Back 9: " + str(back9))
@@ -178,5 +177,3 @@ def main(scorecard):
         print("Calloway Score: " + str(cally1))
 
     return cally1
-
-    

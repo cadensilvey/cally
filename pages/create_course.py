@@ -1,18 +1,16 @@
 from flet import *
-from adjustment.callyScore import main, intSplit, handicapAdjustment, initDeduction
+from adjustment.callyScore import main
 
 class create_course(UserControl):
     def __init__(self, page):
         super().__init__()
         self.page = page
         self.current_hole = 1  # Initialize the current hole to 1
-        self.pars = []  # Initialize an empty list to store pars
         self.scores = []  # Initialize an empty list to store scores
-        # Define text fields for par and score input
-        self.tb_par = TextField(label="Par", value="")
+        # Define text field for score input
         self.tb_score = TextField(label="Score", value="")
         self.hole_label = Text(
-            f"Enter Par and Score for Hole {self.current_hole}",
+            f"Enter Score for Hole {self.current_hole}",
             theme_style=TextThemeStyle.DISPLAY_MEDIUM,
             text_align=alignment.top_center
         )
@@ -27,9 +25,6 @@ class create_course(UserControl):
              text_align=alignment.bottom_center
         )
 
-
-
-
     def calculate_adjusted_score(self):
         total_score = sum(self.scores)
         self.total_score_label.value = f"Total Score: {total_score}"
@@ -40,32 +35,27 @@ class create_course(UserControl):
         # Update the callaway_score_label with the calculated Callaway adjusted score
         self.callaway_score_label.value = f"Callaway Adjusted Score: {callaway_score}"
 
-
     def next_hole(self):
-        # Increment the current hole number and clear the text fields
+        # Increment the current hole number and clear the text field
         self.current_hole += 1
-        self.hole_label.value = f"Enter Par and Score for Hole {self.current_hole}"
-        self.tb_par.value = ""
+        self.hole_label.value = f"Enter Score for Hole {self.current_hole}"
         self.tb_score.value = ""
         self.hole_label.update()
 
     def update(self):
         # Update the hole label text to reflect the current hole number
-        self.hole_label.value = f"Enter Par and Score for Hole {self.current_hole}"
-        # Update the text fields to reflect any changes in their values
-        self.tb_par.update()
+        self.hole_label.value = f"Enter Score for Hole {self.current_hole}"
+        # Update the text field for score to reflect any changes in its value
         self.tb_score.update()
         self.total_score_label.update()
         self.callaway_score_label.update()
 
-
     def build(self):
         def button_clicked(e):
-            # Check if the text fields are not empty before appending to the lists
-            if self.tb_par.value.strip() and self.tb_score.value.strip():
-                self.pars.append(int(self.tb_par.value))
+            # Check if the text field is not empty before appending to the list
+            if self.tb_score.value.strip():
                 self.scores.append(int(self.tb_score.value))
-                # Clear the text fields for the next hole
+                # Clear the text field for the next hole
                 if self.current_hole < 18:
                     self.next_hole()
                 else:
@@ -73,7 +63,7 @@ class create_course(UserControl):
                 # Call the update method to refresh the UI
                 self.update()
             else:
-                print("Please enter both par and score before proceeding.")
+                print("Please enter the score before proceeding.")
 
         return Column(
             controls=[
@@ -87,7 +77,6 @@ class create_course(UserControl):
                             Container(
                                 content=self.hole_label,
                             ),
-                            self.tb_par,
                             self.tb_score,
                             Container(
                                 content=ElevatedButton(
@@ -95,7 +84,16 @@ class create_course(UserControl):
                                     on_click=button_clicked,
                                     bgcolor='#fdebd3',  # Teal color
                                 ),
+                                alignment=alignment.center, # center this button horizontally 
                                 padding=5
+                            ),
+                            Container(
+                                content=ElevatedButton(
+                                    on_click=lambda _: self.page.go('/'),
+                                    text="Go Home",
+                                    bgcolor='#fdebd3',  # Teal color
+                                ),
+                                alignment=alignment.center,  # Center the button horizontally
                             ),
                             self.total_score_label,  # Add total score label here
                             self.callaway_score_label, # Callaway Adjusted Score 
