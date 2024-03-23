@@ -7,16 +7,18 @@ class create_course(UserControl):
         self.page = page
         self.current_hole = 1  # Initialize the current hole to 1
         self.scores = []  # Initialize an empty list to store scores
-        # Define text field for score input
-        self.tb_score = TextField(label="Score", value="")
+        # Define label for score display
+        self.score_label = Text(
+            "0",
+            theme_style=TextThemeStyle.DISPLAY_MEDIUM,
+        )
         self.hole_label = Text(
             f"Enter Score for Hole {self.current_hole}",
             theme_style=TextThemeStyle.DISPLAY_MEDIUM,
-            text_align=alignment.top_center
         )
         self.total_score_label = Text(
             "",
-            theme_style=TextThemeStyle.DISPLAY_MEDIUM,
+            theme_style=TextThemeStyle.DISPLAY_SMALL,
             text_align=alignment.top_center
         )
         self.callaway_score_label = Text(
@@ -36,34 +38,47 @@ class create_course(UserControl):
         self.callaway_score_label.value = f"Callaway Adjusted Score: {callaway_score}"
 
     def next_hole(self):
-        # Increment the current hole number and clear the text field
+        # Save the score for the current hole and reset the score_label
+        self.scores.append(int(self.score_label.value))
+        self.score_label.value = "0"
+        
+        # Increment the current hole number and update the hole label
         self.current_hole += 1
         self.hole_label.value = f"Enter Score for Hole {self.current_hole}"
-        self.tb_score.value = ""
         self.hole_label.update()
 
     def update(self):
         # Update the hole label text to reflect the current hole number
         self.hole_label.value = f"Enter Score for Hole {self.current_hole}"
-        # Update the text field for score to reflect any changes in its value
-        self.tb_score.update()
+        # Update the score label to reflect any changes in its value
+        self.score_label.update()
         self.total_score_label.update()
         self.callaway_score_label.update()
 
     def build(self):
-        def button_clicked(e):
-            # Check if the text field is not empty before appending to the list
-            if self.tb_score.value.strip():
-                self.scores.append(int(self.tb_score.value))
-                # Clear the text field for the next hole
-                if self.current_hole < 18:
-                    self.next_hole()
-                else:
-                    self.calculate_adjusted_score()
-                # Call the update method to refresh the UI
+        def increase_score(_):
+            current_score = int(self.score_label.value)
+            self.score_label.value = str(current_score + 1)
+            self.update()
+
+        def decrease_score(_):
+            current_score = int(self.score_label.value)
+            if current_score > 0:
+                self.score_label.value = str(current_score - 1)
                 self.update()
+
+        def button_clicked(e):
+            # Save the score for the current hole
+            self.scores.append(int(self.score_label.value))
+            # Clear the score label for the next hole
+            self.score_label.value = "0"
+            # Proceed to the next hole or calculate the adjusted score
+            if self.current_hole < 18:
+                self.next_hole()
             else:
-                print("Please enter the score before proceeding.")
+                self.calculate_adjusted_score()
+            # Update the UI
+            self.update()
 
         return Column(
             controls=[
@@ -77,14 +92,39 @@ class create_course(UserControl):
                             Container(
                                 content=self.hole_label,
                             ),
-                            self.tb_score,
+                            Row(
+                                # padding=10,
+                                controls=[
+                                    Container(
+                                        content=ElevatedButton(
+                                            text="-",
+                                            on_click=decrease_score,
+                                            bgcolor='#fdebd3',
+                                        ),
+                                        alignment=alignment.center_left
+                                    ),
+                                    Container(
+                                        content=self.score_label,
+                                        alignment=alignment.center
+                                    ),
+                                    Container(
+                                        content=ElevatedButton(
+                                            text="+",
+                                            on_click=increase_score,
+                                            bgcolor='#fdebd3',
+                                        ),
+                                        alignment=alignment.center_right
+                                    ),
+                                ],
+                                alignment=MainAxisAlignment.SPACE_AROUND  # Specify MainAxisAlignment
+                            ),  # Include the row containing +/- buttons and score label
                             Container(
                                 content=ElevatedButton(
                                     text="Next Hole" if self.current_hole < 18 else "Calculate Adjusted Score",
                                     on_click=button_clicked,
                                     bgcolor='#fdebd3',  # Teal color
                                 ),
-                                alignment=alignment.center, # center this button horizontally 
+                                alignment=alignment.top_center,  # Center the button horizontally
                                 padding=5
                             ),
                             Container(
@@ -96,9 +136,10 @@ class create_course(UserControl):
                                 alignment=alignment.center,  # Center the button horizontally
                             ),
                             self.total_score_label,  # Add total score label here
-                            self.callaway_score_label, # Callaway Adjusted Score 
+                            self.callaway_score_label,  # Callaway Adjusted Score 
                         ]
                     )
                 ),
             ]
         )
+
