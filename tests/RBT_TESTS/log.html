@@ -2081,25 +2081,25 @@ storage = function () {
 window.output = {};
 </script>
 <script type="text/javascript">
-window.output["suite"] = [1,2,3,0,[],[0,0,993],[],[[4,0,0,[],[0,51,941,5],[[0,6,7,0,8,9,0,0,[1,52,476],[[52,2,10]]],[0,11,7,0,12,0,0,0,[1,529,461],[]],[0,13,0,14,15,0,0,16,[0,991,2],[[0,17,18,0,19,0,20,0,[0,991,0],[[991,5,5]]],[0,21,0,0,0,22,23,0,[3,992,0],[]],[0,24,0,0,0,25,0,0,[3,992,0],[]],[0,26,0,0,0,27,0,0,[3,992,0],[]]]],[0,28,0,0,0,0,0,0,[3,992,0],[]],[0,29,0,0,0,30,0,0,[3,992,0],[]],[0,31,0,0,0,32,0,0,[3,993,0],[]]]]],[],[1,0,1,0]];
+window.output["suite"] = [1,2,3,0,[],[1,0,90],[],[[4,0,5,[6],[1,12,78],[[0,7,8,0,9,10,11,0,[1,13,17],[[13,2,12],[15,2,13],[29,2,14],[29,2,15]]],[0,16,17,0,18,19,0,0,[1,30,0],[[30,2,20]]],[0,7,8,0,9,21,11,0,[1,30,15],[[30,2,22],[32,2,13],[45,2,14],[45,2,15]]],[0,16,17,0,18,19,0,0,[1,45,0],[[45,2,20]]],[0,7,8,0,9,23,11,0,[1,45,14],[[46,2,24],[47,2,13],[59,2,14],[60,2,15]]],[0,16,17,0,18,19,0,0,[1,60,0],[[60,2,20]]],[0,7,8,0,9,25,11,0,[1,60,14],[[60,2,26],[62,2,13],[74,2,14],[75,2,15]]],[0,16,17,0,18,19,0,0,[1,75,0],[[75,2,20]]],[0,7,8,0,9,27,11,0,[1,75,14],[[75,2,28],[77,2,13],[89,2,14],[89,2,15]]],[0,16,17,0,18,19,0,0,[1,89,0],[[90,2,20]]]]]],[],[1,1,0,0]];
 </script>
 <script type="text/javascript">
 window.output["strings"] = [];
 </script>
 <script type="text/javascript">
-window.output["strings"] = window.output["strings"].concat(["*","*RBT 003 score calculation","*/Users/cadensilvey/Developer/cally/tests/RBT_TESTS/RBT_003_score_calculation.robot","*RBT_003_score_calculation.robot","*Test Create Course Calculation","*Keyword 'Dialogs.Get Value From User' expected 1 to 3 arguments, got 0.","*Open Browser","*SeleniumLibrary","*<p>Opens a new browser instance to the optional <code>url\x3c/code>.\x3c/p>","*${BASE_URL}/create_course    ${BROWSER}","*Opening browser 'Chrome' to base url '<a href=\"http://137.152.100.34:8551/cally/main-py/create_course\">http://137.152.100.34:8551/cally/main-py/create_course\x3c/a>'.","*Maximize Browser Window","*<p>Maximizes current browser window.\x3c/p>","*Input Scores Manually","*5 minutes","*<p>Manually input scores for each hole\x3c/p>","*manual","*Get Value From User","*Dialogs","*<p>Pauses execution and asks user to input a value.\x3c/p>","*${input_scores}","*Split String","*${input_scores}    ,","*@{scores}","*:FOR","*${score}    IN    @{scores}","*\\","*Input Text    <a href=\"xpath://input[contains(@class\">xpath://input[contains(@class\x3c/a>, 'score_label')]    ${score}","*Calculate Adjusted Score","*Verify Total Score","*89","*Verify Callaway Score","*78"]);
+window.output["strings"] = window.output["strings"].concat(["*","*RBT 01 CallawayScore","*/Users/cadensilvey/Developer/cally/tests/RBT_TESTS/RBT_01_CallawayScore.robot","*RBT_01_CallawayScore.robot","*Test Golf Scoring","*<p>Calculate Callaway Score Based on hard coded data.\x3c/p>","*golf","*Run Process","*Process","*<p>Runs a process and waits for it to complete.\x3c/p>","*${python3 Executable}    ${Script Path}    DressForLess","*${result}","*Starting process:\npython3 /Users/cadensilvey/Developer/GitHub/Courses/Cally/callyScore.py DressForLess","*Waiting for process to complete.","*Process completed.","*${result} = &lt;result object with rc 0&gt;","*Log","*BuiltIn","*<p>Logs the given message with the given level.\x3c/p>","*${result.stdout}","*Front 9: 39\nBack 9: 43\nTotal Score: 82\nCalloway Score: 73","*${python3 Executable}    ${Script Path}    DriveNThriive","*Starting process:\npython3 /Users/cadensilvey/Developer/GitHub/Courses/Cally/callyScore.py DriveNThriive","*${python3 Executable}    ${Script Path}    Osama","*Starting process:\npython3 /Users/cadensilvey/Developer/GitHub/Courses/Cally/callyScore.py Osama","*${python3 Executable}    ${Script Path}    GG","*Starting process:\npython3 /Users/cadensilvey/Developer/GitHub/Courses/Cally/callyScore.py GG","*${python3 Executable}    ${Script Path}    DaddysMoney","*Starting process:\npython3 /Users/cadensilvey/Developer/GitHub/Courses/Cally/callyScore.py DaddysMoney"]);
 </script>
 <script type="text/javascript">
-window.output["stats"] = [[{"elapsed":"00:00:01","fail":1,"label":"All Tests","pass":0,"skip":0}],[],[{"elapsed":"00:00:01","fail":1,"id":"s1","label":"RBT 003 score calculation","name":"RBT 003 score calculation","pass":0,"skip":0}]];
+window.output["stats"] = [[{"elapsed":"00:00:00","fail":0,"label":"All Tests","pass":1,"skip":0}],[{"elapsed":"00:00:00","fail":0,"label":"golf","pass":1,"skip":0}],[{"elapsed":"00:00:00","fail":0,"id":"s1","label":"RBT 01 CallawayScore","name":"RBT 01 CallawayScore","pass":1,"skip":0}]];
 </script>
 <script type="text/javascript">
 window.output["errors"] = [];
 </script>
 <script type="text/javascript">
-window.output["baseMillis"] = 1711262771127;
+window.output["baseMillis"] = 1711309453296;
 </script>
 <script type="text/javascript">
-window.output["generated"] = 994;
+window.output["generated"] = 93;
 </script>
 <script type="text/javascript">
 window.output["expand_keywords"] = null;

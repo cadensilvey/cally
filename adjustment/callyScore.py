@@ -1,6 +1,12 @@
 import os
 import math
 
+DressForLess =  [4, 4, 5, 3, 4, 3, 5, 5, 5, 3, 4, 5, 4, 4, 5, 3, 6, 4] ### 76 - Logan and Preston
+DriveNThriive = [4, 4, 6, 2, 4, 3, 5, 4, 4, 3, 3, 4, 4, 5, 4, 3, 4, 5] ### 71
+Osama = [4, 4, 7, 3, 6, 3, 3, 5, 4, 4, 6, 4, 5, 6, 5, 3, 5, 5] ### 82 - Jordan and Jared
+GG =            [5, 3, 5, 3, 5, 3, 6, 5, 4, 4, 4, 5, 5, 5, 3, 3, 4, 3] ### 75
+DaddysMoney =   [4, 3, 5, 2, 3, 3, 4, 4, 4, 3, 5, 4, 4, 4, 4, 3, 4, 4]
+
 # returns the last digit from the total score (ej: 82 - returns  2, 130 - returns 0)
 def intSplit(total):
     list_of_digits = [int(i) for i in str(total)]

@@ -1,134 +1,312 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<robot generator="Robot 6.1.1 (Python 3.9.6 on darwin)" generated="20231216 23:01:13.540" rpa="false" schemaversion="4">
-<suite id="s1" name="RBT 01 CallawayScore" source="/Users/cadensilvey/Developer/GitHub/Courses/Cally/RBT_TESTS/RBT_01_CallawayScore.robot">
-<test id="s1-t1" name="Test Golf Scoring" line="10">
-<kw name="Run Process" library="Process">
+<robot generator="Robot 7.0 (Python 3.12.1 on darwin)" generated="2024-03-24T12:11:54.583282" rpa="false" schemaversion="5">
+<suite id="s1" name="RBT TESTS" source="/Users/cadensilvey/Developer/cally/tests/RBT_TESTS">
+<suite id="s1-s1" name="RBT 003 score calculation" source="/Users/cadensilvey/Developer/cally/tests/RBT_TESTS/RBT_003_score_calculation.robot">
+<test id="s1-s1-t1" name="Test Create Course Calculation" line="10">
+<kw name="Open Browser" owner="SeleniumLibrary">
+<msg time="2024-03-24T12:11:54.658906" level="INFO">Opening browser 'Chrome' to base url 'http://137.152.100.34:8551/cally/main-py/create'.</msg>
+<arg>${BASE_URL}/create</arg>
+<arg>${BROWSER}</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<status status="PASS" start="2024-03-24T12:11:54.658778" elapsed="0.446248"/>
+</kw>
+<kw name="Maximize Browser Window" owner="SeleniumLibrary">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" start="2024-03-24T12:11:55.105855" elapsed="0.459514"/>
+</kw>
+<kw name="Input Scores Manually">
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<msg time="2024-03-24T12:12:00.780471" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="selenium-screenshot-4.png"&gt;&lt;img src="selenium-screenshot-4.png" width="800px"&gt;&lt;/a&gt;</msg>
+<msg time="2024-03-24T12:12:00.780587" level="FAIL">Element 'id:score_label' not visible after 5 seconds.</msg>
+<arg>id:score_label</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="FAIL" start="2024-03-24T12:11:55.565964" elapsed="5.215285">Element 'id:score_label' not visible after 5 seconds.</status>
+</kw>
+<kw name="Get Value From User" owner="Dialogs">
+<var>${input_scores}</var>
+<arg>Enter scores for each hole (comma-separated):</arg>
+<doc>Pauses execution and asks user to input a value.</doc>
+<status status="NOT RUN" start="2024-03-24T12:12:00.781353" elapsed="0.000015"/>
+</kw>
+<kw name="Create List" owner="BuiltIn">
+<var>@{scores}</var>
+<arg>${input_scores}</arg>
+<doc>Returns a list containing given items.</doc>
+<status status="NOT RUN" start="2024-03-24T12:12:00.781433" elapsed="0.000010"/>
+</kw>
+<for flavor="IN">
+<iter>
+<kw name="Input Text" owner="SeleniumLibrary">
+<arg>id:score_label</arg>
+<arg>${score}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="NOT RUN" start="2024-03-24T12:12:00.781571" elapsed="0.000015"/>
+</kw>
+<var name="${score}"/>
+<status status="NOT RUN" start="2024-03-24T12:12:00.781529" elapsed="0.000076"/>
+</iter>
+<var>${score}</var>
+<value>@{scores}</value>
+<status status="NOT RUN" start="2024-03-24T12:12:00.781478" elapsed="0.000152"/>
+</for>
+<tag>manual</tag>
+<doc>Manually input scores for each hole</doc>
+<timeout value="10 seconds"/>
+<status status="FAIL" start="2024-03-24T12:11:55.565713" elapsed="5.216016">Element 'id:score_label' not visible after 5 seconds.</status>
+</kw>
+<kw name="Calculate Adjusted Score">
+<status status="NOT RUN" start="2024-03-24T12:12:00.781929" elapsed="0.000018"/>
+</kw>
+<kw name="Verify Total Score">
+<arg>89</arg>
+<status status="NOT RUN" start="2024-03-24T12:12:00.782022" elapsed="0.000013"/>
+</kw>
+<kw name="Verify Callaway Score">
+<arg>78</arg>
+<status status="NOT RUN" start="2024-03-24T12:12:00.782100" elapsed="0.000009"/>
+</kw>
+<status status="FAIL" start="2024-03-24T12:11:54.658394" elapsed="6.123818">Element 'id:score_label' not visible after 5 seconds.</status>
+</test>
+<status status="FAIL" start="2024-03-24T12:11:54.591354" elapsed="6.191094"/>
+</suite>
+<suite id="s1-s2" name="RBT 004 play golf" source="/Users/cadensilvey/Developer/cally/tests/RBT_TESTS/RBT_004_play_golf.robot">
+<test id="s1-s2-t1" name="Test Play Golf Button" line="10">
+<kw name="Open Browser" owner="SeleniumLibrary">
+<msg time="2024-03-24T12:12:00.786446" level="INFO">Opening browser 'Chrome' to base url 'http://137.152.100.34:8551/cally/main-py'.</msg>
+<arg>${BASE_URL}</arg>
+<arg>${BROWSER}</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<status status="PASS" start="2024-03-24T12:12:00.786333" elapsed="0.667513"/>
+</kw>
+<kw name="Maximize Browser Window" owner="SeleniumLibrary">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" start="2024-03-24T12:12:01.454481" elapsed="0.458789"/>
+</kw>
+<kw name="Click Element" owner="SeleniumLibrary">
+<msg time="2024-03-24T12:12:01.913687" level="INFO">Clicking element 'class:play-golf-button-class'.</msg>
+<msg time="2024-03-24T12:12:02.093938" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="selenium-screenshot-5.png"&gt;&lt;img src="selenium-screenshot-5.png" width="800px"&gt;&lt;/a&gt;</msg>
+<msg time="2024-03-24T12:12:02.094272" level="FAIL">Element with locator 'class:play-golf-button-class' not found.</msg>
+<arg>class:play-golf-button-class</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="FAIL" start="2024-03-24T12:12:01.913466" elapsed="0.183983">Element with locator 'class:play-golf-button-class' not found.</status>
+</kw>
+<status status="FAIL" start="2024-03-24T12:12:00.786074" elapsed="1.311835">Element with locator 'class:play-golf-button-class' not found.</status>
+</test>
+<status status="FAIL" start="2024-03-24T12:12:00.782674" elapsed="1.315948"/>
+</suite>
+<suite id="s1-s3" name="RBT 005 create" source="/Users/cadensilvey/Developer/cally/tests/RBT_TESTS/RBT_005_create.robot">
+<test id="s1-s3-t1" name="Test Navigation to Create Page" line="11">
+<kw name="Open Browser" owner="SeleniumLibrary">
+<msg time="2024-03-24T12:12:02.102562" level="INFO">Opening browser 'Chrome' to base url 'http://137.152.100.34:8551/cally/main-py'.</msg>
+<arg>${BASE_URL}</arg>
+<arg>${BROWSER}</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<status status="PASS" start="2024-03-24T12:12:02.102355" elapsed="0.667033"/>
+</kw>
+<kw name="Press Play Golf Button">
+<return>
+<value>Press any key to continue...</value>
+<status status="PASS" start="2024-03-24T12:12:02.775845" elapsed="0.000893"/>
+</return>
+<kw name="Log" owner="BuiltIn" type="TEARDOWN">
+<msg time="2024-03-24T12:12:02.778184" level="INFO">Press any key to continue...</msg>
+<arg>Press any key to continue...</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2024-03-24T12:12:02.776986" elapsed="0.001357"/>
+</kw>
+<tag>manual</tag>
+<doc>Wait for the user to manually press the "Play Golf" button.</doc>
+<timeout value="5 minutes"/>
+<status status="PASS" start="2024-03-24T12:12:02.773026" elapsed="0.005447"/>
+</kw>
+<kw name="Wait Until Expected URL">
+<kw name="Press any key to continue...">
+<msg time="2024-03-24T12:12:02.781758" level="FAIL">No keyword with name 'Press any key to continue...' found.</msg>
+<status status="FAIL" start="2024-03-24T12:12:02.781651" elapsed="0.000152">No keyword with name 'Press any key to continue...' found.</status>
+</kw>
+<kw name="Get Location" owner="SeleniumLibrary">
+<var>${CURR_URL}</var>
+<doc>Returns the current browser window URL.</doc>
+<status status="NOT RUN" start="2024-03-24T12:12:02.782034" elapsed="0.000069"/>
+</kw>
+<kw name="Should Be Equal" owner="BuiltIn">
+<arg>${EXPECTED_URL}</arg>
+<arg>${CURR_URL}</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="NOT RUN" start="2024-03-24T12:12:02.782177" elapsed="0.000014"/>
+</kw>
+<status status="FAIL" start="2024-03-24T12:12:02.778823" elapsed="0.003432">No keyword with name 'Press any key to continue...' found.</status>
+</kw>
+<doc>Manually press the "Play Golf" button and then run the test.</doc>
+<tag>manual</tag>
+<status status="FAIL" start="2024-03-24T12:12:02.101840" elapsed="0.680538">No keyword with name 'Press any key to continue...' found.</status>
+</test>
+<status status="FAIL" start="2024-03-24T12:12:02.099026" elapsed="0.683708"/>
+</suite>
+<suite id="s1-s4" name="RBT 00 page load" source="/Users/cadensilvey/Developer/cally/tests/RBT_TESTS/RBT_00_page_load.robot">
+<test id="s1-s4-t1" name="Test Page Load" line="9">
+<kw name="Open Browser" owner="SeleniumLibrary">
+<msg time="2024-03-24T12:12:02.785138" level="INFO">Opening browser 'Chrome' to base url 'http://137.152.100.34:8551/cally/main-py'.</msg>
+<arg>${BASE_URL}</arg>
+<arg>${BROWSER}</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<status status="PASS" start="2024-03-24T12:12:02.784958" elapsed="0.793594"/>
+</kw>
+<kw name="Maximize Browser Window" owner="SeleniumLibrary">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" start="2024-03-24T12:12:03.578893" elapsed="0.461821"/>
+</kw>
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>xpath://div[@id='loading'][not(@style='display: block;')]</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2024-03-24T12:12:04.040867" elapsed="0.013103"/>
+</kw>
+<kw name="Close Browser" owner="SeleniumLibrary" type="TEARDOWN">
+<doc>Closes the current browser.</doc>
+<status status="PASS" start="2024-03-24T12:12:04.054174" elapsed="0.071886"/>
+</kw>
+<status status="PASS" start="2024-03-24T12:12:02.784693" elapsed="1.341460"/>
+</test>
+<status status="PASS" start="2024-03-24T12:12:02.782972" elapsed="1.343384"/>
+</suite>
+<suite id="s1-s5" name="RBT 01 CallawayScore" source="/Users/cadensilvey/Developer/cally/tests/RBT_TESTS/RBT_01_CallawayScore.robot">
+<test id="s1-s5-t1" name="Test Golf Scoring" line="10">
+<kw name="Run Process" owner="Process">
+<msg time="2024-03-24T12:12:04.129187" level="INFO">Starting process:
+python3 /Users/cadensilvey/Developer/GitHub/Courses/Cally/callyScore.py DressForLess</msg>
+<msg time="2024-03-24T12:12:04.131476" level="INFO">Waiting for process to complete.</msg>
+<msg time="2024-03-24T12:12:04.146821" level="INFO">Process completed.</msg>
+<msg time="2024-03-24T12:12:04.147047" level="INFO">${result} = &lt;result object with rc 0&gt;</msg>
 <var>${result}</var>
 <arg>${python3 Executable}</arg>
 <arg>${Script Path}</arg>
 <arg>DressForLess</arg>
 <doc>Runs a process and waits for it to complete.</doc>
-<msg timestamp="20231216 23:01:13.555" level="INFO">Starting process:
-python3 /Users/cadensilvey/Developer/GitHub/Courses/Cally/callyScore.py DressForLess</msg>
-<msg timestamp="20231216 23:01:13.561" level="INFO">Waiting for process to complete.</msg>
-<msg timestamp="20231216 23:01:13.778" level="INFO">Process completed.</msg>
-<msg timestamp="20231216 23:01:13.778" level="INFO">${result} = &lt;result object with rc 0&gt;</msg>
-<status status="PASS" starttime="20231216 23:01:13.555" endtime="20231216 23:01:13.778"/>
+<status status="PASS" start="2024-03-24T12:12:04.129059" elapsed="0.018003"/>
 </kw>
-<kw name="Log" library="BuiltIn">
-<arg>${result.stdout}</arg>
-<doc>Logs the given message with the given level.</doc>
-<msg timestamp="20231216 23:01:13.779" level="INFO">Front 9: 39
+<kw name="Log" owner="BuiltIn">
+<msg time="2024-03-24T12:12:04.147660" level="INFO">Front 9: 39
 Back 9: 43
 Total Score: 82
 Calloway Score: 73</msg>
-<status status="PASS" starttime="20231216 23:01:13.779" endtime="20231216 23:01:13.779"/>
+<arg>${result.stdout}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2024-03-24T12:12:04.147315" elapsed="0.000364"/>
 </kw>
-<kw name="Run Process" library="Process">
+<kw name="Run Process" owner="Process">
+<msg time="2024-03-24T12:12:04.147858" level="INFO">Starting process:
+python3 /Users/cadensilvey/Developer/GitHub/Courses/Cally/callyScore.py DriveNThriive</msg>
+<msg time="2024-03-24T12:12:04.149644" level="INFO">Waiting for process to complete.</msg>
+<msg time="2024-03-24T12:12:04.162330" level="INFO">Process completed.</msg>
+<msg time="2024-03-24T12:12:04.162544" level="INFO">${result} = &lt;result object with rc 0&gt;</msg>
 <var>${result}</var>
 <arg>${python3 Executable}</arg>
 <arg>${Script Path}</arg>
 <arg>DriveNThriive</arg>
 <doc>Runs a process and waits for it to complete.</doc>
-<msg timestamp="20231216 23:01:13.780" level="INFO">Starting process:
-python3 /Users/cadensilvey/Developer/GitHub/Courses/Cally/callyScore.py DriveNThriive</msg>
-<msg timestamp="20231216 23:01:13.782" level="INFO">Waiting for process to complete.</msg>
-<msg timestamp="20231216 23:01:13.797" level="INFO">Process completed.</msg>
-<msg timestamp="20231216 23:01:13.797" level="INFO">${result} = &lt;result object with rc 0&gt;</msg>
-<status status="PASS" starttime="20231216 23:01:13.779" endtime="20231216 23:01:13.797"/>
+<status status="PASS" start="2024-03-24T12:12:04.147744" elapsed="0.014813"/>
 </kw>
-<kw name="Log" library="BuiltIn">
-<arg>${result.stdout}</arg>
-<doc>Logs the given message with the given level.</doc>
-<msg timestamp="20231216 23:01:13.798" level="INFO">Front 9: 39
+<kw name="Log" owner="BuiltIn">
+<msg time="2024-03-24T12:12:04.163116" level="INFO">Front 9: 39
 Back 9: 43
 Total Score: 82
 Calloway Score: 73</msg>
-<status status="PASS" starttime="20231216 23:01:13.797" endtime="20231216 23:01:13.798"/>
+<arg>${result.stdout}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2024-03-24T12:12:04.162799" elapsed="0.000339"/>
 </kw>
-<kw name="Run Process" library="Process">
+<kw name="Run Process" owner="Process">
+<msg time="2024-03-24T12:12:04.163318" level="INFO">Starting process:
+python3 /Users/cadensilvey/Developer/GitHub/Courses/Cally/callyScore.py Osama</msg>
+<msg time="2024-03-24T12:12:04.165138" level="INFO">Waiting for process to complete.</msg>
+<msg time="2024-03-24T12:12:04.177885" level="INFO">Process completed.</msg>
+<msg time="2024-03-24T12:12:04.178093" level="INFO">${result} = &lt;result object with rc 0&gt;</msg>
 <var>${result}</var>
 <arg>${python3 Executable}</arg>
 <arg>${Script Path}</arg>
 <arg>Osama</arg>
 <doc>Runs a process and waits for it to complete.</doc>
-<msg timestamp="20231216 23:01:13.798" level="INFO">Starting process:
-python3 /Users/cadensilvey/Developer/GitHub/Courses/Cally/callyScore.py Osama</msg>
-<msg timestamp="20231216 23:01:13.801" level="INFO">Waiting for process to complete.</msg>
-<msg timestamp="20231216 23:01:13.817" level="INFO">Process completed.</msg>
-<msg timestamp="20231216 23:01:13.817" level="INFO">${result} = &lt;result object with rc 0&gt;</msg>
-<status status="PASS" starttime="20231216 23:01:13.798" endtime="20231216 23:01:13.817"/>
+<status status="PASS" start="2024-03-24T12:12:04.163211" elapsed="0.014895"/>
 </kw>
-<kw name="Log" library="BuiltIn">
-<arg>${result.stdout}</arg>
-<doc>Logs the given message with the given level.</doc>
-<msg timestamp="20231216 23:01:13.818" level="INFO">Front 9: 39
+<kw name="Log" owner="BuiltIn">
+<msg time="2024-03-24T12:12:04.178656" level="INFO">Front 9: 39
 Back 9: 43
 Total Score: 82
 Calloway Score: 73</msg>
-<status status="PASS" starttime="20231216 23:01:13.817" endtime="20231216 23:01:13.818"/>
+<arg>${result.stdout}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2024-03-24T12:12:04.178354" elapsed="0.000319"/>
 </kw>
-<kw name="Run Process" library="Process">
+<kw name="Run Process" owner="Process">
+<msg time="2024-03-24T12:12:04.178862" level="INFO">Starting process:
+python3 /Users/cadensilvey/Developer/GitHub/Courses/Cally/callyScore.py GG</msg>
+<msg time="2024-03-24T12:12:04.180560" level="INFO">Waiting for process to complete.</msg>
+<msg time="2024-03-24T12:12:04.193269" level="INFO">Process completed.</msg>
+<msg time="2024-03-24T12:12:04.193489" level="INFO">${result} = &lt;result object with rc 0&gt;</msg>
 <var>${result}</var>
 <arg>${python3 Executable}</arg>
 <arg>${Script Path}</arg>
 <arg>GG</arg>
 <doc>Runs a process and waits for it to complete.</doc>
-<msg timestamp="20231216 23:01:13.818" level="INFO">Starting process:
-python3 /Users/cadensilvey/Developer/GitHub/Courses/Cally/callyScore.py GG</msg>
-<msg timestamp="20231216 23:01:13.820" level="INFO">Waiting for process to complete.</msg>
-<msg timestamp="20231216 23:01:13.835" level="INFO">Process completed.</msg>
-<msg timestamp="20231216 23:01:13.835" level="INFO">${result} = &lt;result object with rc 0&gt;</msg>
-<status status="PASS" starttime="20231216 23:01:13.818" endtime="20231216 23:01:13.835"/>
+<status status="PASS" start="2024-03-24T12:12:04.178752" elapsed="0.014751"/>
 </kw>
-<kw name="Log" library="BuiltIn">
-<arg>${result.stdout}</arg>
-<doc>Logs the given message with the given level.</doc>
-<msg timestamp="20231216 23:01:13.836" level="INFO">Front 9: 39
+<kw name="Log" owner="BuiltIn">
+<msg time="2024-03-24T12:12:04.194058" level="INFO">Front 9: 39
 Back 9: 43
 Total Score: 82
 Calloway Score: 73</msg>
-<status status="PASS" starttime="20231216 23:01:13.835" endtime="20231216 23:01:13.836"/>
+<arg>${result.stdout}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2024-03-24T12:12:04.193743" elapsed="0.000333"/>
 </kw>
-<kw name="Run Process" library="Process">
+<kw name="Run Process" owner="Process">
+<msg time="2024-03-24T12:12:04.194260" level="INFO">Starting process:
+python3 /Users/cadensilvey/Developer/GitHub/Courses/Cally/callyScore.py DaddysMoney</msg>
+<msg time="2024-03-24T12:12:04.195958" level="INFO">Waiting for process to complete.</msg>
+<msg time="2024-03-24T12:12:04.209821" level="INFO">Process completed.</msg>
+<msg time="2024-03-24T12:12:04.210051" level="INFO">${result} = &lt;result object with rc 0&gt;</msg>
 <var>${result}</var>
 <arg>${python3 Executable}</arg>
 <arg>${Script Path}</arg>
 <arg>DaddysMoney</arg>
 <doc>Runs a process and waits for it to complete.</doc>
-<msg timestamp="20231216 23:01:13.836" level="INFO">Starting process:
-python3 /Users/cadensilvey/Developer/GitHub/Courses/Cally/callyScore.py DaddysMoney</msg>
-<msg timestamp="20231216 23:01:13.838" level="INFO">Waiting for process to complete.</msg>
-<msg timestamp="20231216 23:01:13.853" level="INFO">Process completed.</msg>
-<msg timestamp="20231216 23:01:13.853" level="INFO">${result} = &lt;result object with rc 0&gt;</msg>
-<status status="PASS" starttime="20231216 23:01:13.836" endtime="20231216 23:01:13.853"/>
+<status status="PASS" start="2024-03-24T12:12:04.194145" elapsed="0.015921"/>
 </kw>
-<kw name="Log" library="BuiltIn">
-<arg>${result.stdout}</arg>
-<doc>Logs the given message with the given level.</doc>
-<msg timestamp="20231216 23:01:13.854" level="INFO">Front 9: 39
+<kw name="Log" owner="BuiltIn">
+<msg time="2024-03-24T12:12:04.210674" level="INFO">Front 9: 39
 Back 9: 43
 Total Score: 82
 Calloway Score: 73</msg>
-<status status="PASS" starttime="20231216 23:01:13.853" endtime="20231216 23:01:13.854"/>
+<arg>${result.stdout}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2024-03-24T12:12:04.210343" elapsed="0.000357"/>
 </kw>
 <doc>Calculate Callaway Score Based on hard coded data.</doc>
 <tag>golf</tag>
-<status status="PASS" starttime="20231216 23:01:13.554" endtime="20231216 23:01:13.854"/>
+<status status="PASS" start="2024-03-24T12:12:04.128864" elapsed="0.081921"/>
 </test>
-<status status="PASS" starttime="20231216 23:01:13.541" endtime="20231216 23:01:13.854"/>
+<status status="PASS" start="2024-03-24T12:12:04.126541" elapsed="0.084392"/>
+</suite>
+<status status="FAIL" start="2024-03-24T12:11:54.583776" elapsed="9.627369"/>
 </suite>
 <statistics>
 <total>
-<stat pass="1" fail="0" skip="0">All Tests</stat>
+<stat pass="2" fail="3" skip="0">All Tests</stat>
 </total>
 <tag>
 <stat pass="1" fail="0" skip="0">golf</stat>
+<stat pass="0" fail="1" skip="0">manual</stat>
 </tag>
 <suite>
-<stat pass="1" fail="0" skip="0" id="s1" name="RBT 01 CallawayScore">RBT 01 CallawayScore</stat>
+<stat pass="2" fail="3" skip="0" id="s1" name="RBT TESTS">RBT TESTS</stat>
+<stat pass="0" fail="1" skip="0" id="s1-s1" name="RBT 003 score calculation">RBT TESTS.RBT 003 score calculation</stat>
+<stat pass="0" fail="1" skip="0" id="s1-s2" name="RBT 004 play golf">RBT TESTS.RBT 004 play golf</stat>
+<stat pass="0" fail="1" skip="0" id="s1-s3" name="RBT 005 create">RBT TESTS.RBT 005 create</stat>
+<stat pass="1" fail="0" skip="0" id="s1-s4" name="RBT 00 page load">RBT TESTS.RBT 00 page load</stat>
+<stat pass="1" fail="0" skip="0" id="s1-s5" name="RBT 01 CallawayScore">RBT TESTS.RBT 01 CallawayScore</stat>
 </suite>
 </statistics>
 <errors>
+<msg time="2024-03-24T12:11:54.581333" level="WARN">Error in file '/Users/cadensilvey/Developer/cally/tests/RBT_TESTS/RBT_005_create.robot' on line 23: The '[Return]' setting is deprecated. Use the 'RETURN' statement instead.</msg>
 </errors>
 </robot>

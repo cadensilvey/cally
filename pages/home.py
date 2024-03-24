@@ -41,7 +41,7 @@ class home(UserControl):
                                     on_click=lambda _: self.page.go('/create'),
                                     text="Play Golf",
                                     bgcolor='#FFFFFF',  # Teal color
-                                    id="play_golf_button"  # Add an id attribute
+                                    # id='play_golf_button'  # Add an id attribute
                                 ),
                                 alignment=alignment.center,  # Center the button horizontally
                             ),

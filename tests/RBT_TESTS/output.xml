@@ -1,71 +1,132 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<robot generator="Robot 7.0 (Python 3.12.1 on darwin)" generated="2024-03-23T23:46:11.126518" rpa="false" schemaversion="5">
-<suite id="s1" name="RBT 003 score calculation" source="/Users/cadensilvey/Developer/cally/tests/RBT_TESTS/RBT_003_score_calculation.robot">
-<test id="s1-t1" name="Test Create Course Calculation" line="10">
-<kw name="Open Browser" owner="SeleniumLibrary">
-<msg time="2024-03-23T23:46:11.179004" level="INFO">Opening browser 'Chrome' to base url 'http://137.152.100.34:8551/cally/main-py/create_course'.</msg>
-<arg>${BASE_URL}/create_course</arg>
-<arg>${BROWSER}</arg>
-<doc>Opens a new browser instance to the optional ``url``.</doc>
-<status status="PASS" start="2024-03-23T23:46:11.178883" elapsed="0.476336"/>
+<robot generator="Robot 7.0 (Python 3.12.1 on darwin)" generated="2024-03-24T12:44:13.295121" rpa="false" schemaversion="5">
+<suite id="s1" name="RBT 01 CallawayScore" source="/Users/cadensilvey/Developer/cally/tests/RBT_TESTS/RBT_01_CallawayScore.robot">
+<test id="s1-t1" name="Test Golf Scoring" line="10">
+<kw name="Run Process" owner="Process">
+<msg time="2024-03-24T12:44:13.308716" level="INFO">Starting process:
+python3 /Users/cadensilvey/Developer/GitHub/Courses/Cally/callyScore.py DressForLess</msg>
+<msg time="2024-03-24T12:44:13.311045" level="INFO">Waiting for process to complete.</msg>
+<msg time="2024-03-24T12:44:13.325255" level="INFO">Process completed.</msg>
+<msg time="2024-03-24T12:44:13.325485" level="INFO">${result} = &lt;result object with rc 0&gt;</msg>
+<var>${result}</var>
+<arg>${python3 Executable}</arg>
+<arg>${Script Path}</arg>
+<arg>DressForLess</arg>
+<doc>Runs a process and waits for it to complete.</doc>
+<status status="PASS" start="2024-03-24T12:44:13.308591" elapsed="0.016914"/>
 </kw>
-<kw name="Maximize Browser Window" owner="SeleniumLibrary">
-<doc>Maximizes current browser window.</doc>
-<status status="PASS" start="2024-03-23T23:46:11.656018" elapsed="0.461318"/>
+<kw name="Log" owner="BuiltIn">
+<msg time="2024-03-24T12:44:13.326190" level="INFO">Front 9: 39
+Back 9: 43
+Total Score: 82
+Calloway Score: 73</msg>
+<arg>${result.stdout}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2024-03-24T12:44:13.325818" elapsed="0.000391"/>
 </kw>
-<kw name="Input Scores Manually">
-<kw name="Get Value From User" owner="Dialogs">
-<msg time="2024-03-23T23:46:12.118267" level="FAIL">Keyword 'Dialogs.Get Value From User' expected 1 to 3 arguments, got 0.</msg>
-<var>${input_scores}</var>
-<doc>Pauses execution and asks user to input a value.</doc>
-<status status="FAIL" start="2024-03-23T23:46:12.118167" elapsed="0.000126">Keyword 'Dialogs.Get Value From User' expected 1 to 3 arguments, got 0.</status>
+<kw name="Run Process" owner="Process">
+<msg time="2024-03-24T12:44:13.326396" level="INFO">Starting process:
+python3 /Users/cadensilvey/Developer/GitHub/Courses/Cally/callyScore.py DriveNThriive</msg>
+<msg time="2024-03-24T12:44:13.328117" level="INFO">Waiting for process to complete.</msg>
+<msg time="2024-03-24T12:44:13.340653" level="INFO">Process completed.</msg>
+<msg time="2024-03-24T12:44:13.340833" level="INFO">${result} = &lt;result object with rc 0&gt;</msg>
+<var>${result}</var>
+<arg>${python3 Executable}</arg>
+<arg>${Script Path}</arg>
+<arg>DriveNThriive</arg>
+<doc>Runs a process and waits for it to complete.</doc>
+<status status="PASS" start="2024-03-24T12:44:13.326278" elapsed="0.014571"/>
 </kw>
-<kw name="Split String">
-<var>@{scores}</var>
-<arg>${input_scores}</arg>
-<arg>,</arg>
-<status status="NOT RUN" start="2024-03-23T23:46:12.119052" elapsed="0.000016"/>
+<kw name="Log" owner="BuiltIn">
+<msg time="2024-03-24T12:44:13.341378" level="INFO">Front 9: 39
+Back 9: 43
+Total Score: 82
+Calloway Score: 73</msg>
+<arg>${result.stdout}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2024-03-24T12:44:13.341079" elapsed="0.000316"/>
 </kw>
-<kw name=":FOR">
-<arg>${score}</arg>
-<arg>IN</arg>
-<arg>@{scores}</arg>
-<status status="NOT RUN" start="2024-03-23T23:46:12.119142" elapsed="0.000024"/>
+<kw name="Run Process" owner="Process">
+<msg time="2024-03-24T12:44:13.341579" level="INFO">Starting process:
+python3 /Users/cadensilvey/Developer/GitHub/Courses/Cally/callyScore.py Osama</msg>
+<msg time="2024-03-24T12:44:13.343158" level="INFO">Waiting for process to complete.</msg>
+<msg time="2024-03-24T12:44:13.355446" level="INFO">Process completed.</msg>
+<msg time="2024-03-24T12:44:13.355638" level="INFO">${result} = &lt;result object with rc 0&gt;</msg>
+<var>${result}</var>
+<arg>${python3 Executable}</arg>
+<arg>${Script Path}</arg>
+<arg>Osama</arg>
+<doc>Runs a process and waits for it to complete.</doc>
+<status status="PASS" start="2024-03-24T12:44:13.341469" elapsed="0.014185"/>
 </kw>
-<kw name="\">
-<arg>Input Text</arg>
-<arg>xpath://input[contains(@class, 'score_label')]</arg>
-<arg>${score}</arg>
-<status status="NOT RUN" start="2024-03-23T23:46:12.119235" elapsed="0.000012"/>
+<kw name="Log" owner="BuiltIn">
+<msg time="2024-03-24T12:44:13.356161" level="INFO">Front 9: 39
+Back 9: 43
+Total Score: 82
+Calloway Score: 73</msg>
+<arg>${result.stdout}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2024-03-24T12:44:13.355869" elapsed="0.000314"/>
 </kw>
-<tag>manual</tag>
-<doc>Manually input scores for each hole</doc>
-<timeout value="5 minutes"/>
-<status status="FAIL" start="2024-03-23T23:46:12.117734" elapsed="0.001587">Keyword 'Dialogs.Get Value From User' expected 1 to 3 arguments, got 0.</status>
+<kw name="Run Process" owner="Process">
+<msg time="2024-03-24T12:44:13.356367" level="INFO">Starting process:
+python3 /Users/cadensilvey/Developer/GitHub/Courses/Cally/callyScore.py GG</msg>
+<msg time="2024-03-24T12:44:13.358004" level="INFO">Waiting for process to complete.</msg>
+<msg time="2024-03-24T12:44:13.370371" level="INFO">Process completed.</msg>
+<msg time="2024-03-24T12:44:13.370574" level="INFO">${result} = &lt;result object with rc 0&gt;</msg>
+<var>${result}</var>
+<arg>${python3 Executable}</arg>
+<arg>${Script Path}</arg>
+<arg>GG</arg>
+<doc>Runs a process and waits for it to complete.</doc>
+<status status="PASS" start="2024-03-24T12:44:13.356259" elapsed="0.014329"/>
 </kw>
-<kw name="Calculate Adjusted Score">
-<status status="NOT RUN" start="2024-03-23T23:46:12.119425" elapsed="0.000013"/>
+<kw name="Log" owner="BuiltIn">
+<msg time="2024-03-24T12:44:13.371091" level="INFO">Front 9: 39
+Back 9: 43
+Total Score: 82
+Calloway Score: 73</msg>
+<arg>${result.stdout}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2024-03-24T12:44:13.370808" elapsed="0.000301"/>
 </kw>
-<kw name="Verify Total Score">
-<arg>89</arg>
-<status status="NOT RUN" start="2024-03-23T23:46:12.119499" elapsed="0.000011"/>
+<kw name="Run Process" owner="Process">
+<msg time="2024-03-24T12:44:13.371301" level="INFO">Starting process:
+python3 /Users/cadensilvey/Developer/GitHub/Courses/Cally/callyScore.py DaddysMoney</msg>
+<msg time="2024-03-24T12:44:13.372864" level="INFO">Waiting for process to complete.</msg>
+<msg time="2024-03-24T12:44:13.385043" level="INFO">Process completed.</msg>
+<msg time="2024-03-24T12:44:13.385219" level="INFO">${result} = &lt;result object with rc 0&gt;</msg>
+<var>${result}</var>
+<arg>${python3 Executable}</arg>
+<arg>${Script Path}</arg>
+<arg>DaddysMoney</arg>
+<doc>Runs a process and waits for it to complete.</doc>
+<status status="PASS" start="2024-03-24T12:44:13.371181" elapsed="0.014051"/>
 </kw>
-<kw name="Verify Callaway Score">
-<arg>78</arg>
-<status status="NOT RUN" start="2024-03-23T23:46:12.119561" elapsed="0.000008"/>
+<kw name="Log" owner="BuiltIn">
+<msg time="2024-03-24T12:44:13.385730" level="INFO">Front 9: 39
+Back 9: 43
+Total Score: 82
+Calloway Score: 73</msg>
+<arg>${result.stdout}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2024-03-24T12:44:13.385462" elapsed="0.000283"/>
 </kw>
-<status status="FAIL" start="2024-03-23T23:46:11.178498" elapsed="0.941159">Keyword 'Dialogs.Get Value From User' expected 1 to 3 arguments, got 0.</status>
+<doc>Calculate Callaway Score Based on hard coded data.</doc>
+<tag>golf</tag>
+<status status="PASS" start="2024-03-24T12:44:13.308298" elapsed="0.077541"/>
 </test>
-<status status="FAIL" start="2024-03-23T23:46:11.126984" elapsed="0.992910"/>
+<status status="PASS" start="2024-03-24T12:44:13.295609" elapsed="0.090481"/>
 </suite>
 <statistics>
 <total>
-<stat pass="0" fail="1" skip="0">All Tests</stat>
+<stat pass="1" fail="0" skip="0">All Tests</stat>
 </total>
 <tag>
+<stat pass="1" fail="0" skip="0">golf</stat>
 </tag>
 <suite>
-<stat pass="0" fail="1" skip="0" id="s1" name="RBT 003 score calculation">RBT 003 score calculation</stat>
+<stat pass="1" fail="0" skip="0" id="s1" name="RBT 01 CallawayScore">RBT 01 CallawayScore</stat>
 </suite>
 </statistics>
 <errors>

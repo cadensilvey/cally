@@ -12,6 +12,7 @@ class create_course(UserControl):
             "0",
             theme_style=TextThemeStyle.DISPLAY_MEDIUM,
             color='#FFFFFF',
+            # id='score_label'
         )
         self.hole_label = Text(
             f"Enter Score for Hole {self.current_hole}",
