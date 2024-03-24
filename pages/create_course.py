@@ -78,8 +78,14 @@ class create_course(UserControl):
                 self.update()
 
         def button_clicked(e):
+            # Check if the entered score is zero
+            current_score = int(self.score_label.value)
+            if current_score == 0:
+                print("Please enter a score greater than 0.")
+                return  # Exit the method without proceeding to the next hole
+
             # Save the score for the current hole
-            self.scores.append(int(self.score_label.value))
+            self.scores.append(current_score)
             # Clear the score label for the next hole
             self.score_label.value = "0"
             # Proceed to the next hole or calculate the adjusted score
@@ -89,6 +95,7 @@ class create_course(UserControl):
                 self.calculate_adjusted_score()
             # Update the UI
             self.update()
+
 
         return Column(
             controls=[
