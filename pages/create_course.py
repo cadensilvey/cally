@@ -11,20 +11,24 @@ class create_course(UserControl):
         self.score_label = Text(
             "0",
             theme_style=TextThemeStyle.DISPLAY_MEDIUM,
+            color='#fdebd3',
         )
         self.hole_label = Text(
             f"Enter Score for Hole {self.current_hole}",
             theme_style=TextThemeStyle.DISPLAY_MEDIUM,
+            color='#fdebd3',
         )
         self.total_score_label = Text(
             "",
+            color='#fdebd3',
             theme_style=TextThemeStyle.DISPLAY_SMALL,
             text_align=alignment.top_center
         )
         self.callaway_score_label = Text(
              "",
+             color='#fdebd3',
              theme_style=TextThemeStyle.DISPLAY_SMALL,
-             text_align=alignment.bottom_center
+             text_align=alignment.bottom_right
         )
 
     def calculate_adjusted_score(self):
@@ -38,14 +42,20 @@ class create_course(UserControl):
         self.callaway_score_label.value = f"Callaway Adjusted Score: {callaway_score}"
 
     def next_hole(self):
-        # Save the score for the current hole and reset the score_label
-        self.scores.append(int(self.score_label.value))
+        # Save the score for the current hole only if it's not zero
+        current_score = int(self.score_label.value)
+        if current_score != 0:
+            self.scores.append(current_score)
+        # Print the list of scores
+        print("List of Scores:", self.scores)
+        # Clear the score label for the next hole
         self.score_label.value = "0"
         
         # Increment the current hole number and update the hole label
         self.current_hole += 1
         self.hole_label.value = f"Enter Score for Hole {self.current_hole}"
         self.hole_label.update()
+
 
     def update(self):
         # Update the hole label text to reflect the current hole number
@@ -87,10 +97,24 @@ class create_course(UserControl):
                     width=1000,
                     padding=5,
                     margin=5,
+                    bgcolor='#006400',  # Dark green color
                     content=Column(
                         controls=[
                             Container(
+                                content=
+                                    Icon(
+                                        name=icons.GOLF_COURSE,
+                                        color='#fdebd3',
+                                        size=50,
+                                    ),
+                                padding=5,
+                                alignment=alignment.center,  # Center the icon horizontally and vertically
+                            ),
+                            Container(
+                                padding=50,
+                                margin=5,
                                 content=self.hole_label,
+                                alignment=alignment.center,
                             ),
                             Row(
                                 # padding=10,

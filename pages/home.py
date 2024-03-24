@@ -25,7 +25,6 @@ class home(UserControl):
                                     ),
                                 padding=50,
                                 alignment=alignment.center,  # Center the icon horizontally and vertically
-
                             ),
                             Container(
                                 content=Text(
@@ -39,7 +38,7 @@ class home(UserControl):
                             ),
                             Container(
                                 content=ElevatedButton(
-                                    on_click=lambda _: self.page.go('/type'),
+                                    on_click=lambda _: self.page.go('/create'),
                                     text="Play Golf",
                                     bgcolor='#fdebd3',  # Teal color
                                 ),
