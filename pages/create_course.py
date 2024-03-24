@@ -11,24 +11,24 @@ class create_course(UserControl):
         self.score_label = Text(
             "0",
             theme_style=TextThemeStyle.DISPLAY_MEDIUM,
-            color='#fdebd3',
+            color='#FFFFFF',
         )
         self.hole_label = Text(
             f"Enter Score for Hole {self.current_hole}",
             theme_style=TextThemeStyle.DISPLAY_MEDIUM,
-            color='#fdebd3',
+            color='#FFFFFF',
         )
         self.total_score_label = Text(
             "",
-            color='#fdebd3',
+            color='#FFFFFF',
             theme_style=TextThemeStyle.DISPLAY_SMALL,
-            text_align=alignment.top_center
+            text_align=alignment.center,
         )
         self.callaway_score_label = Text(
-             "",
-             color='#fdebd3',
-             theme_style=TextThemeStyle.DISPLAY_SMALL,
-             text_align=alignment.bottom_right
+            "",
+            color='#FFFFFF',
+            theme_style=TextThemeStyle.DISPLAY_SMALL,
+            text_align=alignment.center,
         )
 
     def calculate_adjusted_score(self):
@@ -55,7 +55,6 @@ class create_course(UserControl):
         self.current_hole += 1
         self.hole_label.value = f"Enter Score for Hole {self.current_hole}"
         self.hole_label.update()
-
 
     def update(self):
         # Update the hole label text to reflect the current hole number
@@ -96,14 +95,13 @@ class create_course(UserControl):
             # Update the UI
             self.update()
 
-
         return Column(
             controls=[
                 Container(
                     height=1000,
                     width=1000,
-                    padding=5,
-                    margin=5,
+                    padding=10,
+                    margin=10,
                     bgcolor='#006400',  # Dark green color
                     content=Column(
                         controls=[
@@ -111,26 +109,25 @@ class create_course(UserControl):
                                 content=
                                     Icon(
                                         name=icons.GOLF_COURSE,
-                                        color='#fdebd3',
+                                        color='#FFFFFF',
                                         size=50,
                                     ),
                                 padding=5,
                                 alignment=alignment.center,  # Center the icon horizontally and vertically
                             ),
                             Container(
-                                padding=50,
+                                padding=20,
                                 margin=5,
                                 content=self.hole_label,
                                 alignment=alignment.center,
                             ),
                             Row(
-                                # padding=10,
                                 controls=[
                                     Container(
                                         content=ElevatedButton(
                                             text="-",
                                             on_click=decrease_score,
-                                            bgcolor='#fdebd3',
+                                            bgcolor='#FFFFFF',
                                         ),
                                         alignment=alignment.center_left
                                     ),
@@ -142,35 +139,34 @@ class create_course(UserControl):
                                         content=ElevatedButton(
                                             text="+",
                                             on_click=increase_score,
-                                            bgcolor='#fdebd3',
+                                            bgcolor='#FFFFFF',
                                         ),
                                         alignment=alignment.center_right
                                     ),
                                 ],
-                                alignment=MainAxisAlignment.SPACE_AROUND  # Specify MainAxisAlignment
-                            ),  # Include the row containing +/- buttons and score label
+                                alignment=MainAxisAlignment.SPACE_AROUND
+                            ),
                             Container(
                                 content=ElevatedButton(
                                     text="Next Hole" if self.current_hole < 18 else "Calculate Adjusted Score",
                                     on_click=button_clicked,
-                                    bgcolor='#fdebd3',  # Teal color
+                                    bgcolor='#FFFFFF',
                                 ),
-                                alignment=alignment.top_center,  # Center the button horizontally
-                                padding=5
+                                alignment=alignment.center,
+                                padding=20
                             ),
                             Container(
                                 content=ElevatedButton(
                                     on_click=lambda _: self.page.go('/'),
                                     text="Go Home",
-                                    bgcolor='#fdebd3',  # Teal color
+                                    bgcolor='#FFFFFF',
                                 ),
-                                alignment=alignment.center,  # Center the button horizontally
+                                alignment=alignment.center,
                             ),
-                            self.total_score_label,  # Add total score label here
-                            self.callaway_score_label,  # Callaway Adjusted Score 
+                            self.total_score_label,
+                            self.callaway_score_label,
                         ]
                     )
                 ),
             ]
         )
-

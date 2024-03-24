@@ -1,520 +1,73 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<robot generator="Robot 7.0 (Python 3.12.1 on darwin)" generated="2024-02-08T16:43:54.875631" rpa="false" schemaversion="5">
-<suite id="s1" name="RBT 02 course details" source="/Users/cadensilvey/Developer/cally/Logic/RBT_TESTS/RBT_02_course_details.robot">
-<test id="s1-t1" name="Open Application" line="11">
+<robot generator="Robot 7.0 (Python 3.12.1 on darwin)" generated="2024-03-23T23:46:11.126518" rpa="false" schemaversion="5">
+<suite id="s1" name="RBT 003 score calculation" source="/Users/cadensilvey/Developer/cally/tests/RBT_TESTS/RBT_003_score_calculation.robot">
+<test id="s1-t1" name="Test Create Course Calculation" line="10">
 <kw name="Open Browser" owner="SeleniumLibrary">
-<msg time="2024-02-08T16:43:54.955496" level="INFO">Opening browser 'Chrome' to base url 'http://137.152.100.34:8551/cally/main-py'.</msg>
-<arg>${BASE_URL}</arg>
+<msg time="2024-03-23T23:46:11.179004" level="INFO">Opening browser 'Chrome' to base url 'http://137.152.100.34:8551/cally/main-py/create_course'.</msg>
+<arg>${BASE_URL}/create_course</arg>
 <arg>${BROWSER}</arg>
 <doc>Opens a new browser instance to the optional ``url``.</doc>
-<status status="PASS" start="2024-02-08T16:43:54.955385" elapsed="1.314260"/>
+<status status="PASS" start="2024-03-23T23:46:11.178883" elapsed="0.476336"/>
 </kw>
-<status status="PASS" start="2024-02-08T16:43:54.954974" elapsed="1.315335"/>
+<kw name="Maximize Browser Window" owner="SeleniumLibrary">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" start="2024-03-23T23:46:11.656018" elapsed="0.461318"/>
+</kw>
+<kw name="Input Scores Manually">
+<kw name="Get Value From User" owner="Dialogs">
+<msg time="2024-03-23T23:46:12.118267" level="FAIL">Keyword 'Dialogs.Get Value From User' expected 1 to 3 arguments, got 0.</msg>
+<var>${input_scores}</var>
+<doc>Pauses execution and asks user to input a value.</doc>
+<status status="FAIL" start="2024-03-23T23:46:12.118167" elapsed="0.000126">Keyword 'Dialogs.Get Value From User' expected 1 to 3 arguments, got 0.</status>
+</kw>
+<kw name="Split String">
+<var>@{scores}</var>
+<arg>${input_scores}</arg>
+<arg>,</arg>
+<status status="NOT RUN" start="2024-03-23T23:46:12.119052" elapsed="0.000016"/>
+</kw>
+<kw name=":FOR">
+<arg>${score}</arg>
+<arg>IN</arg>
+<arg>@{scores}</arg>
+<status status="NOT RUN" start="2024-03-23T23:46:12.119142" elapsed="0.000024"/>
+</kw>
+<kw name="\">
+<arg>Input Text</arg>
+<arg>xpath://input[contains(@class, 'score_label')]</arg>
+<arg>${score}</arg>
+<status status="NOT RUN" start="2024-03-23T23:46:12.119235" elapsed="0.000012"/>
+</kw>
+<tag>manual</tag>
+<doc>Manually input scores for each hole</doc>
+<timeout value="5 minutes"/>
+<status status="FAIL" start="2024-03-23T23:46:12.117734" elapsed="0.001587">Keyword 'Dialogs.Get Value From User' expected 1 to 3 arguments, got 0.</status>
+</kw>
+<kw name="Calculate Adjusted Score">
+<status status="NOT RUN" start="2024-03-23T23:46:12.119425" elapsed="0.000013"/>
+</kw>
+<kw name="Verify Total Score">
+<arg>89</arg>
+<status status="NOT RUN" start="2024-03-23T23:46:12.119499" elapsed="0.000011"/>
+</kw>
+<kw name="Verify Callaway Score">
+<arg>78</arg>
+<status status="NOT RUN" start="2024-03-23T23:46:12.119561" elapsed="0.000008"/>
+</kw>
+<status status="FAIL" start="2024-03-23T23:46:11.178498" elapsed="0.941159">Keyword 'Dialogs.Get Value From User' expected 1 to 3 arguments, got 0.</status>
 </test>
-<test id="s1-t2" name="Test Full Eighteen Page" line="14">
-<kw name="Go To">
-<kw name="Go To">
-<kw name="Go To">
-<kw name="Go To">
-<kw name="Go To">
-<kw name="Go To">
-<kw name="Go To">
-<kw name="Go To">
-<kw name="Go To">
-<kw name="Go To">
-<kw name="Go To">
-<kw name="Go To">
-<kw name="Go To">
-<kw name="Go To">
-<kw name="Go To">
-<kw name="Go To">
-<kw name="Go To">
-<kw name="Go To">
-<kw name="Go To">
-<kw name="Go To">
-<kw name="Go To">
-<kw name="Go To">
-<kw name="Go To">
-<kw name="Go To">
-<kw name="Go To">
-<kw name="Go To">
-<kw name="Go To">
-<kw name="Go To">
-<kw name="Go To">
-<kw name="Go To">
-<kw name="Go To">
-<kw name="Go To">
-<kw name="Go To">
-<kw name="Go To">
-<kw name="Go To">
-<kw name="Go To">
-<kw name="Go To">
-<kw name="Go To">
-<kw name="Go To">
-<kw name="Go To">
-<kw name="Go To">
-<kw name="Go To">
-<kw name="Go To">
-<kw name="Go To">
-<kw name="Go To">
-<kw name="Go To">
-<kw name="Go To">
-<kw name="Go To">
-<kw name="Go To">
-<kw name="Go To">
-<kw name="Go To">
-<kw name="Go To">
-<kw name="Go To">
-<kw name="Go To">
-<kw name="Go To">
-<kw name="Go To">
-<kw name="Go To">
-<kw name="Go To">
-<kw name="Go To">
-<kw name="Go To">
-<kw name="Go To">
-<kw name="Go To">
-<kw name="Go To">
-<kw name="Go To">
-<kw name="Go To">
-<kw name="Go To">
-<kw name="Go To">
-<kw name="Go To">
-<kw name="Go To">
-<kw name="Go To">
-<kw name="Go To">
-<kw name="Go To">
-<kw name="Go To">
-<kw name="Go To">
-<kw name="Go To">
-<kw name="Go To">
-<kw name="Go To">
-<kw name="Go To">
-<kw name="Go To">
-<kw name="Go To">
-<kw name="Go To">
-<kw name="Go To">
-<kw name="Go To">
-<kw name="Go To">
-<kw name="Go To">
-<kw name="Go To">
-<kw name="Go To">
-<kw name="Go To">
-<kw name="Go To">
-<kw name="Go To">
-<kw name="Go To">
-<kw name="Go To">
-<kw name="Go To">
-<kw name="Go To">
-<kw name="Go To">
-<kw name="Go To">
-<kw name="Go To">
-<kw name="Go To">
-<kw name="Go To">
-<kw name="Go To">
-<msg time="2024-02-08T16:43:56.288611" level="FAIL">Maximum limit of started keywords and control structures exceeded.</msg>
-<arg>${url}</arg>
-<status status="FAIL" start="2024-02-08T16:43:56.288425" elapsed="0.000213">Maximum limit of started keywords and control structures exceeded.</status>
-</kw>
-<msg time="2024-02-08T16:43:56.289482" level="FAIL">Maximum limit of started keywords and control structures exceeded.</msg>
-<arg>${url}</arg>
-<status status="FAIL" start="2024-02-08T16:43:56.288226" elapsed="0.001282">Maximum limit of started keywords and control structures exceeded.</status>
-</kw>
-<msg time="2024-02-08T16:43:56.289645" level="FAIL">Maximum limit of started keywords and control structures exceeded.</msg>
-<arg>${url}</arg>
-<status status="FAIL" start="2024-02-08T16:43:56.288068" elapsed="0.001597">Maximum limit of started keywords and control structures exceeded.</status>
-</kw>
-<msg time="2024-02-08T16:43:56.289804" level="FAIL">Maximum limit of started keywords and control structures exceeded.</msg>
-<arg>${url}</arg>
-<status status="FAIL" start="2024-02-08T16:43:56.287890" elapsed="0.001929">Maximum limit of started keywords and control structures exceeded.</status>
-</kw>
-<msg time="2024-02-08T16:43:56.289911" level="FAIL">Maximum limit of started keywords and control structures exceeded.</msg>
-<arg>${url}</arg>
-<status status="FAIL" start="2024-02-08T16:43:56.287558" elapsed="0.002365">Maximum limit of started keywords and control structures exceeded.</status>
-</kw>
-<msg time="2024-02-08T16:43:56.290015" level="FAIL">Maximum limit of started keywords and control structures exceeded.</msg>
-<arg>${url}</arg>
-<status status="FAIL" start="2024-02-08T16:43:56.287276" elapsed="0.002750">Maximum limit of started keywords and control structures exceeded.</status>
-</kw>
-<msg time="2024-02-08T16:43:56.290116" level="FAIL">Maximum limit of started keywords and control structures exceeded.</msg>
-<arg>${url}</arg>
-<status status="FAIL" start="2024-02-08T16:43:56.287009" elapsed="0.003122">Maximum limit of started keywords and control structures exceeded.</status>
-</kw>
-<msg time="2024-02-08T16:43:56.290383" level="FAIL">Maximum limit of started keywords and control structures exceeded.</msg>
-<arg>${url}</arg>
-<status status="FAIL" start="2024-02-08T16:43:56.286588" elapsed="0.003812">Maximum limit of started keywords and control structures exceeded.</status>
-</kw>
-<msg time="2024-02-08T16:43:56.290504" level="FAIL">Maximum limit of started keywords and control structures exceeded.</msg>
-<arg>${url}</arg>
-<status status="FAIL" start="2024-02-08T16:43:56.286402" elapsed="0.004114">Maximum limit of started keywords and control structures exceeded.</status>
-</kw>
-<msg time="2024-02-08T16:43:56.290598" level="FAIL">Maximum limit of started keywords and control structures exceeded.</msg>
-<arg>${url}</arg>
-<status status="FAIL" start="2024-02-08T16:43:56.286320" elapsed="0.004288">Maximum limit of started keywords and control structures exceeded.</status>
-</kw>
-<msg time="2024-02-08T16:43:56.290875" level="FAIL">Maximum limit of started keywords and control structures exceeded.</msg>
-<arg>${url}</arg>
-<status status="FAIL" start="2024-02-08T16:43:56.286212" elapsed="0.004679">Maximum limit of started keywords and control structures exceeded.</status>
-</kw>
-<msg time="2024-02-08T16:43:56.291065" level="FAIL">Maximum limit of started keywords and control structures exceeded.</msg>
-<arg>${url}</arg>
-<status status="FAIL" start="2024-02-08T16:43:56.285918" elapsed="0.005160">Maximum limit of started keywords and control structures exceeded.</status>
-</kw>
-<msg time="2024-02-08T16:43:56.291227" level="FAIL">Maximum limit of started keywords and control structures exceeded.</msg>
-<arg>${url}</arg>
-<status status="FAIL" start="2024-02-08T16:43:56.285547" elapsed="0.005691">Maximum limit of started keywords and control structures exceeded.</status>
-</kw>
-<msg time="2024-02-08T16:43:56.291455" level="FAIL">Maximum limit of started keywords and control structures exceeded.</msg>
-<arg>${url}</arg>
-<status status="FAIL" start="2024-02-08T16:43:56.285313" elapsed="0.006159">Maximum limit of started keywords and control structures exceeded.</status>
-</kw>
-<msg time="2024-02-08T16:43:56.291569" level="FAIL">Maximum limit of started keywords and control structures exceeded.</msg>
-<arg>${url}</arg>
-<status status="FAIL" start="2024-02-08T16:43:56.285195" elapsed="0.006384">Maximum limit of started keywords and control structures exceeded.</status>
-</kw>
-<msg time="2024-02-08T16:43:56.291691" level="FAIL">Maximum limit of started keywords and control structures exceeded.</msg>
-<arg>${url}</arg>
-<status status="FAIL" start="2024-02-08T16:43:56.284942" elapsed="0.006771">Maximum limit of started keywords and control structures exceeded.</status>
-</kw>
-<msg time="2024-02-08T16:43:56.291893" level="FAIL">Maximum limit of started keywords and control structures exceeded.</msg>
-<arg>${url}</arg>
-<status status="FAIL" start="2024-02-08T16:43:56.284566" elapsed="0.007345">Maximum limit of started keywords and control structures exceeded.</status>
-</kw>
-<msg time="2024-02-08T16:43:56.292039" level="FAIL">Maximum limit of started keywords and control structures exceeded.</msg>
-<arg>${url}</arg>
-<status status="FAIL" start="2024-02-08T16:43:56.284462" elapsed="0.007590">Maximum limit of started keywords and control structures exceeded.</status>
-</kw>
-<msg time="2024-02-08T16:43:56.292126" level="FAIL">Maximum limit of started keywords and control structures exceeded.</msg>
-<arg>${url}</arg>
-<status status="FAIL" start="2024-02-08T16:43:56.284380" elapsed="0.011403">Maximum limit of started keywords and control structures exceeded.</status>
-</kw>
-<msg time="2024-02-08T16:43:56.296006" level="FAIL">Maximum limit of started keywords and control structures exceeded.</msg>
-<arg>${url}</arg>
-<status status="FAIL" start="2024-02-08T16:43:56.284218" elapsed="0.011829">Maximum limit of started keywords and control structures exceeded.</status>
-</kw>
-<msg time="2024-02-08T16:43:56.296175" level="FAIL">Maximum limit of started keywords and control structures exceeded.</msg>
-<arg>${url}</arg>
-<status status="FAIL" start="2024-02-08T16:43:56.283895" elapsed="0.012294">Maximum limit of started keywords and control structures exceeded.</status>
-</kw>
-<msg time="2024-02-08T16:43:56.296278" level="FAIL">Maximum limit of started keywords and control structures exceeded.</msg>
-<arg>${url}</arg>
-<status status="FAIL" start="2024-02-08T16:43:56.283753" elapsed="0.012539">Maximum limit of started keywords and control structures exceeded.</status>
-</kw>
-<msg time="2024-02-08T16:43:56.296369" level="FAIL">Maximum limit of started keywords and control structures exceeded.</msg>
-<arg>${url}</arg>
-<status status="FAIL" start="2024-02-08T16:43:56.283671" elapsed="0.012708">Maximum limit of started keywords and control structures exceeded.</status>
-</kw>
-<msg time="2024-02-08T16:43:56.296449" level="FAIL">Maximum limit of started keywords and control structures exceeded.</msg>
-<arg>${url}</arg>
-<status status="FAIL" start="2024-02-08T16:43:56.283571" elapsed="0.012888">Maximum limit of started keywords and control structures exceeded.</status>
-</kw>
-<msg time="2024-02-08T16:43:56.296525" level="FAIL">Maximum limit of started keywords and control structures exceeded.</msg>
-<arg>${url}</arg>
-<status status="FAIL" start="2024-02-08T16:43:56.283460" elapsed="0.013074">Maximum limit of started keywords and control structures exceeded.</status>
-</kw>
-<msg time="2024-02-08T16:43:56.296599" level="FAIL">Maximum limit of started keywords and control structures exceeded.</msg>
-<arg>${url}</arg>
-<status status="FAIL" start="2024-02-08T16:43:56.283149" elapsed="0.013460">Maximum limit of started keywords and control structures exceeded.</status>
-</kw>
-<msg time="2024-02-08T16:43:56.296676" level="FAIL">Maximum limit of started keywords and control structures exceeded.</msg>
-<arg>${url}</arg>
-<status status="FAIL" start="2024-02-08T16:43:56.282912" elapsed="0.013774">Maximum limit of started keywords and control structures exceeded.</status>
-</kw>
-<msg time="2024-02-08T16:43:56.296750" level="FAIL">Maximum limit of started keywords and control structures exceeded.</msg>
-<arg>${url}</arg>
-<status status="FAIL" start="2024-02-08T16:43:56.282838" elapsed="0.013922">Maximum limit of started keywords and control structures exceeded.</status>
-</kw>
-<msg time="2024-02-08T16:43:56.297455" level="FAIL">Maximum limit of started keywords and control structures exceeded.</msg>
-<arg>${url}</arg>
-<status status="FAIL" start="2024-02-08T16:43:56.282754" elapsed="0.014722">Maximum limit of started keywords and control structures exceeded.</status>
-</kw>
-<msg time="2024-02-08T16:43:56.297605" level="FAIL">Maximum limit of started keywords and control structures exceeded.</msg>
-<arg>${url}</arg>
-<status status="FAIL" start="2024-02-08T16:43:56.282638" elapsed="0.014991">Maximum limit of started keywords and control structures exceeded.</status>
-</kw>
-<msg time="2024-02-08T16:43:56.297756" level="FAIL">Maximum limit of started keywords and control structures exceeded.</msg>
-<arg>${url}</arg>
-<status status="FAIL" start="2024-02-08T16:43:56.282311" elapsed="0.015474">Maximum limit of started keywords and control structures exceeded.</status>
-</kw>
-<msg time="2024-02-08T16:43:56.297882" level="FAIL">Maximum limit of started keywords and control structures exceeded.</msg>
-<arg>${url}</arg>
-<status status="FAIL" start="2024-02-08T16:43:56.282211" elapsed="0.015681">Maximum limit of started keywords and control structures exceeded.</status>
-</kw>
-<msg time="2024-02-08T16:43:56.297968" level="FAIL">Maximum limit of started keywords and control structures exceeded.</msg>
-<arg>${url}</arg>
-<status status="FAIL" start="2024-02-08T16:43:56.282087" elapsed="0.015891">Maximum limit of started keywords and control structures exceeded.</status>
-</kw>
-<msg time="2024-02-08T16:43:56.298161" level="FAIL">Maximum limit of started keywords and control structures exceeded.</msg>
-<arg>${url}</arg>
-<status status="FAIL" start="2024-02-08T16:43:56.281837" elapsed="0.016335">Maximum limit of started keywords and control structures exceeded.</status>
-</kw>
-<msg time="2024-02-08T16:43:56.298238" level="FAIL">Maximum limit of started keywords and control structures exceeded.</msg>
-<arg>${url}</arg>
-<status status="FAIL" start="2024-02-08T16:43:56.281597" elapsed="0.016651">Maximum limit of started keywords and control structures exceeded.</status>
-</kw>
-<msg time="2024-02-08T16:43:56.298312" level="FAIL">Maximum limit of started keywords and control structures exceeded.</msg>
-<arg>${url}</arg>
-<status status="FAIL" start="2024-02-08T16:43:56.281525" elapsed="0.016796">Maximum limit of started keywords and control structures exceeded.</status>
-</kw>
-<msg time="2024-02-08T16:43:56.298387" level="FAIL">Maximum limit of started keywords and control structures exceeded.</msg>
-<arg>${url}</arg>
-<status status="FAIL" start="2024-02-08T16:43:56.281450" elapsed="0.016947">Maximum limit of started keywords and control structures exceeded.</status>
-</kw>
-<msg time="2024-02-08T16:43:56.298503" level="FAIL">Maximum limit of started keywords and control structures exceeded.</msg>
-<arg>${url}</arg>
-<status status="FAIL" start="2024-02-08T16:43:56.281372" elapsed="0.017146">Maximum limit of started keywords and control structures exceeded.</status>
-</kw>
-<msg time="2024-02-08T16:43:56.298597" level="FAIL">Maximum limit of started keywords and control structures exceeded.</msg>
-<arg>${url}</arg>
-<status status="FAIL" start="2024-02-08T16:43:56.281297" elapsed="0.017311">Maximum limit of started keywords and control structures exceeded.</status>
-</kw>
-<msg time="2024-02-08T16:43:56.298674" level="FAIL">Maximum limit of started keywords and control structures exceeded.</msg>
-<arg>${url}</arg>
-<status status="FAIL" start="2024-02-08T16:43:56.281222" elapsed="0.017461">Maximum limit of started keywords and control structures exceeded.</status>
-</kw>
-<msg time="2024-02-08T16:43:56.298754" level="FAIL">Maximum limit of started keywords and control structures exceeded.</msg>
-<arg>${url}</arg>
-<status status="FAIL" start="2024-02-08T16:43:56.281143" elapsed="0.017621">Maximum limit of started keywords and control structures exceeded.</status>
-</kw>
-<msg time="2024-02-08T16:43:56.298831" level="FAIL">Maximum limit of started keywords and control structures exceeded.</msg>
-<arg>${url}</arg>
-<status status="FAIL" start="2024-02-08T16:43:56.281062" elapsed="0.017779">Maximum limit of started keywords and control structures exceeded.</status>
-</kw>
-<msg time="2024-02-08T16:43:56.298908" level="FAIL">Maximum limit of started keywords and control structures exceeded.</msg>
-<arg>${url}</arg>
-<status status="FAIL" start="2024-02-08T16:43:56.280944" elapsed="0.017985">Maximum limit of started keywords and control structures exceeded.</status>
-</kw>
-<msg time="2024-02-08T16:43:56.299003" level="FAIL">Maximum limit of started keywords and control structures exceeded.</msg>
-<arg>${url}</arg>
-<status status="FAIL" start="2024-02-08T16:43:56.280568" elapsed="0.018453">Maximum limit of started keywords and control structures exceeded.</status>
-</kw>
-<msg time="2024-02-08T16:43:56.299115" level="FAIL">Maximum limit of started keywords and control structures exceeded.</msg>
-<arg>${url}</arg>
-<status status="FAIL" start="2024-02-08T16:43:56.280217" elapsed="0.018914">Maximum limit of started keywords and control structures exceeded.</status>
-</kw>
-<msg time="2024-02-08T16:43:56.299217" level="FAIL">Maximum limit of started keywords and control structures exceeded.</msg>
-<arg>${url}</arg>
-<status status="FAIL" start="2024-02-08T16:43:56.279894" elapsed="0.019610">Maximum limit of started keywords and control structures exceeded.</status>
-</kw>
-<msg time="2024-02-08T16:43:56.299746" level="FAIL">Maximum limit of started keywords and control structures exceeded.</msg>
-<arg>${url}</arg>
-<status status="FAIL" start="2024-02-08T16:43:56.279773" elapsed="0.019985">Maximum limit of started keywords and control structures exceeded.</status>
-</kw>
-<msg time="2024-02-08T16:43:56.299826" level="FAIL">Maximum limit of started keywords and control structures exceeded.</msg>
-<arg>${url}</arg>
-<status status="FAIL" start="2024-02-08T16:43:56.279700" elapsed="0.020136">Maximum limit of started keywords and control structures exceeded.</status>
-</kw>
-<msg time="2024-02-08T16:43:56.300016" level="FAIL">Maximum limit of started keywords and control structures exceeded.</msg>
-<arg>${url}</arg>
-<status status="FAIL" start="2024-02-08T16:43:56.279624" elapsed="0.020480">Maximum limit of started keywords and control structures exceeded.</status>
-</kw>
-<msg time="2024-02-08T16:43:56.300261" level="FAIL">Maximum limit of started keywords and control structures exceeded.</msg>
-<arg>${url}</arg>
-<status status="FAIL" start="2024-02-08T16:43:56.279538" elapsed="0.020747">Maximum limit of started keywords and control structures exceeded.</status>
-</kw>
-<msg time="2024-02-08T16:43:56.300418" level="FAIL">Maximum limit of started keywords and control structures exceeded.</msg>
-<arg>${url}</arg>
-<status status="FAIL" start="2024-02-08T16:43:56.279455" elapsed="0.020976">Maximum limit of started keywords and control structures exceeded.</status>
-</kw>
-<msg time="2024-02-08T16:43:56.300753" level="FAIL">Maximum limit of started keywords and control structures exceeded.</msg>
-<arg>${url}</arg>
-<status status="FAIL" start="2024-02-08T16:43:56.279365" elapsed="0.021439">Maximum limit of started keywords and control structures exceeded.</status>
-</kw>
-<msg time="2024-02-08T16:43:56.301049" level="FAIL">Maximum limit of started keywords and control structures exceeded.</msg>
-<arg>${url}</arg>
-<status status="FAIL" start="2024-02-08T16:43:56.279272" elapsed="0.021837">Maximum limit of started keywords and control structures exceeded.</status>
-</kw>
-<msg time="2024-02-08T16:43:56.301260" level="FAIL">Maximum limit of started keywords and control structures exceeded.</msg>
-<arg>${url}</arg>
-<status status="FAIL" start="2024-02-08T16:43:56.279155" elapsed="0.022125">Maximum limit of started keywords and control structures exceeded.</status>
-</kw>
-<msg time="2024-02-08T16:43:56.301439" level="FAIL">Maximum limit of started keywords and control structures exceeded.</msg>
-<arg>${url}</arg>
-<status status="FAIL" start="2024-02-08T16:43:56.279037" elapsed="0.022418">Maximum limit of started keywords and control structures exceeded.</status>
-</kw>
-<msg time="2024-02-08T16:43:56.301617" level="FAIL">Maximum limit of started keywords and control structures exceeded.</msg>
-<arg>${url}</arg>
-<status status="FAIL" start="2024-02-08T16:43:56.278962" elapsed="0.022668">Maximum limit of started keywords and control structures exceeded.</status>
-</kw>
-<msg time="2024-02-08T16:43:56.301694" level="FAIL">Maximum limit of started keywords and control structures exceeded.</msg>
-<arg>${url}</arg>
-<status status="FAIL" start="2024-02-08T16:43:56.278882" elapsed="0.022823">Maximum limit of started keywords and control structures exceeded.</status>
-</kw>
-<msg time="2024-02-08T16:43:56.301762" level="FAIL">Maximum limit of started keywords and control structures exceeded.</msg>
-<arg>${url}</arg>
-<status status="FAIL" start="2024-02-08T16:43:56.278801" elapsed="0.022977">Maximum limit of started keywords and control structures exceeded.</status>
-</kw>
-<msg time="2024-02-08T16:43:56.302075" level="FAIL">Maximum limit of started keywords and control structures exceeded.</msg>
-<arg>${url}</arg>
-<status status="FAIL" start="2024-02-08T16:43:56.278527" elapsed="0.023633">Maximum limit of started keywords and control structures exceeded.</status>
-</kw>
-<msg time="2024-02-08T16:43:56.302612" level="FAIL">Maximum limit of started keywords and control structures exceeded.</msg>
-<arg>${url}</arg>
-<status status="FAIL" start="2024-02-08T16:43:56.278305" elapsed="0.024380">Maximum limit of started keywords and control structures exceeded.</status>
-</kw>
-<msg time="2024-02-08T16:43:56.303159" level="FAIL">Maximum limit of started keywords and control structures exceeded.</msg>
-<arg>${url}</arg>
-<status status="FAIL" start="2024-02-08T16:43:56.278134" elapsed="0.025242">Maximum limit of started keywords and control structures exceeded.</status>
-</kw>
-<msg time="2024-02-08T16:43:56.303582" level="FAIL">Maximum limit of started keywords and control structures exceeded.</msg>
-<arg>${url}</arg>
-<status status="FAIL" start="2024-02-08T16:43:56.277994" elapsed="0.025645">Maximum limit of started keywords and control structures exceeded.</status>
-</kw>
-<msg time="2024-02-08T16:43:56.303875" level="FAIL">Maximum limit of started keywords and control structures exceeded.</msg>
-<arg>${url}</arg>
-<status status="FAIL" start="2024-02-08T16:43:56.277805" elapsed="0.026090">Maximum limit of started keywords and control structures exceeded.</status>
-</kw>
-<msg time="2024-02-08T16:43:56.304028" level="FAIL">Maximum limit of started keywords and control structures exceeded.</msg>
-<arg>${url}</arg>
-<status status="FAIL" start="2024-02-08T16:43:56.277730" elapsed="0.026309">Maximum limit of started keywords and control structures exceeded.</status>
-</kw>
-<msg time="2024-02-08T16:43:56.304153" level="FAIL">Maximum limit of started keywords and control structures exceeded.</msg>
-<arg>${url}</arg>
-<status status="FAIL" start="2024-02-08T16:43:56.277649" elapsed="0.026520">Maximum limit of started keywords and control structures exceeded.</status>
-</kw>
-<msg time="2024-02-08T16:43:56.304236" level="FAIL">Maximum limit of started keywords and control structures exceeded.</msg>
-<arg>${url}</arg>
-<status status="FAIL" start="2024-02-08T16:43:56.277364" elapsed="0.026883">Maximum limit of started keywords and control structures exceeded.</status>
-</kw>
-<msg time="2024-02-08T16:43:56.304358" level="FAIL">Maximum limit of started keywords and control structures exceeded.</msg>
-<arg>${url}</arg>
-<status status="FAIL" start="2024-02-08T16:43:56.277289" elapsed="0.027118">Maximum limit of started keywords and control structures exceeded.</status>
-</kw>
-<msg time="2024-02-08T16:43:56.304471" level="FAIL">Maximum limit of started keywords and control structures exceeded.</msg>
-<arg>${url}</arg>
-<status status="FAIL" start="2024-02-08T16:43:56.277211" elapsed="0.027270">Maximum limit of started keywords and control structures exceeded.</status>
-</kw>
-<msg time="2024-02-08T16:43:56.304535" level="FAIL">Maximum limit of started keywords and control structures exceeded.</msg>
-<arg>${url}</arg>
-<status status="FAIL" start="2024-02-08T16:43:56.277129" elapsed="0.027416">Maximum limit of started keywords and control structures exceeded.</status>
-</kw>
-<msg time="2024-02-08T16:43:56.304595" level="FAIL">Maximum limit of started keywords and control structures exceeded.</msg>
-<arg>${url}</arg>
-<status status="FAIL" start="2024-02-08T16:43:56.277041" elapsed="0.027563">Maximum limit of started keywords and control structures exceeded.</status>
-</kw>
-<msg time="2024-02-08T16:43:56.304655" level="FAIL">Maximum limit of started keywords and control structures exceeded.</msg>
-<arg>${url}</arg>
-<status status="FAIL" start="2024-02-08T16:43:56.276931" elapsed="0.027733">Maximum limit of started keywords and control structures exceeded.</status>
-</kw>
-<msg time="2024-02-08T16:43:56.304723" level="FAIL">Maximum limit of started keywords and control structures exceeded.</msg>
-<arg>${url}</arg>
-<status status="FAIL" start="2024-02-08T16:43:56.276719" elapsed="0.028013">Maximum limit of started keywords and control structures exceeded.</status>
-</kw>
-<msg time="2024-02-08T16:43:56.304844" level="FAIL">Maximum limit of started keywords and control structures exceeded.</msg>
-<arg>${url}</arg>
-<status status="FAIL" start="2024-02-08T16:43:56.276399" elapsed="0.028482">Maximum limit of started keywords and control structures exceeded.</status>
-</kw>
-<msg time="2024-02-08T16:43:56.305142" level="FAIL">Maximum limit of started keywords and control structures exceeded.</msg>
-<arg>${url}</arg>
-<status status="FAIL" start="2024-02-08T16:43:56.275994" elapsed="0.029164">Maximum limit of started keywords and control structures exceeded.</status>
-</kw>
-<msg time="2024-02-08T16:43:56.305244" level="FAIL">Maximum limit of started keywords and control structures exceeded.</msg>
-<arg>${url}</arg>
-<status status="FAIL" start="2024-02-08T16:43:56.275481" elapsed="0.029780">Maximum limit of started keywords and control structures exceeded.</status>
-</kw>
-<msg time="2024-02-08T16:43:56.305339" level="FAIL">Maximum limit of started keywords and control structures exceeded.</msg>
-<arg>${url}</arg>
-<status status="FAIL" start="2024-02-08T16:43:56.275317" elapsed="0.030031">Maximum limit of started keywords and control structures exceeded.</status>
-</kw>
-<msg time="2024-02-08T16:43:56.305393" level="FAIL">Maximum limit of started keywords and control structures exceeded.</msg>
-<arg>${url}</arg>
-<status status="FAIL" start="2024-02-08T16:43:56.275154" elapsed="0.030249">Maximum limit of started keywords and control structures exceeded.</status>
-</kw>
-<msg time="2024-02-08T16:43:56.305448" level="FAIL">Maximum limit of started keywords and control structures exceeded.</msg>
-<arg>${url}</arg>
-<status status="FAIL" start="2024-02-08T16:43:56.275060" elapsed="0.030397">Maximum limit of started keywords and control structures exceeded.</status>
-</kw>
-<msg time="2024-02-08T16:43:56.305518" level="FAIL">Maximum limit of started keywords and control structures exceeded.</msg>
-<arg>${url}</arg>
-<status status="FAIL" start="2024-02-08T16:43:56.274775" elapsed="0.030760">Maximum limit of started keywords and control structures exceeded.</status>
-</kw>
-<msg time="2024-02-08T16:43:56.305612" level="FAIL">Maximum limit of started keywords and control structures exceeded.</msg>
-<arg>${url}</arg>
-<status status="FAIL" start="2024-02-08T16:43:56.274393" elapsed="0.031231">Maximum limit of started keywords and control structures exceeded.</status>
-</kw>
-<msg time="2024-02-08T16:43:56.305681" level="FAIL">Maximum limit of started keywords and control structures exceeded.</msg>
-<arg>${url}</arg>
-<status status="FAIL" start="2024-02-08T16:43:56.273923" elapsed="0.031768">Maximum limit of started keywords and control structures exceeded.</status>
-</kw>
-<msg time="2024-02-08T16:43:56.305741" level="FAIL">Maximum limit of started keywords and control structures exceeded.</msg>
-<arg>${url}</arg>
-<status status="FAIL" start="2024-02-08T16:43:56.273678" elapsed="0.032074">Maximum limit of started keywords and control structures exceeded.</status>
-</kw>
-<msg time="2024-02-08T16:43:56.305799" level="FAIL">Maximum limit of started keywords and control structures exceeded.</msg>
-<arg>${url}</arg>
-<status status="FAIL" start="2024-02-08T16:43:56.273538" elapsed="0.032271">Maximum limit of started keywords and control structures exceeded.</status>
-</kw>
-<msg time="2024-02-08T16:43:56.305856" level="FAIL">Maximum limit of started keywords and control structures exceeded.</msg>
-<arg>${url}</arg>
-<status status="FAIL" start="2024-02-08T16:43:56.273209" elapsed="0.032656">Maximum limit of started keywords and control structures exceeded.</status>
-</kw>
-<msg time="2024-02-08T16:43:56.305913" level="FAIL">Maximum limit of started keywords and control structures exceeded.</msg>
-<arg>${url}</arg>
-<status status="FAIL" start="2024-02-08T16:43:56.273099" elapsed="0.032823">Maximum limit of started keywords and control structures exceeded.</status>
-</kw>
-<msg time="2024-02-08T16:43:56.305984" level="FAIL">Maximum limit of started keywords and control structures exceeded.</msg>
-<arg>${url}</arg>
-<status status="FAIL" start="2024-02-08T16:43:56.272826" elapsed="0.033169">Maximum limit of started keywords and control structures exceeded.</status>
-</kw>
-<msg time="2024-02-08T16:43:56.306043" level="FAIL">Maximum limit of started keywords and control structures exceeded.</msg>
-<arg>${url}</arg>
-<status status="FAIL" start="2024-02-08T16:43:56.272740" elapsed="0.033313">Maximum limit of started keywords and control structures exceeded.</status>
-</kw>
-<msg time="2024-02-08T16:43:56.306127" level="FAIL">Maximum limit of started keywords and control structures exceeded.</msg>
-<arg>${url}</arg>
-<status status="FAIL" start="2024-02-08T16:43:56.272574" elapsed="0.033568">Maximum limit of started keywords and control structures exceeded.</status>
-</kw>
-<msg time="2024-02-08T16:43:56.306230" level="FAIL">Maximum limit of started keywords and control structures exceeded.</msg>
-<arg>${url}</arg>
-<status status="FAIL" start="2024-02-08T16:43:56.272280" elapsed="0.033968">Maximum limit of started keywords and control structures exceeded.</status>
-</kw>
-<msg time="2024-02-08T16:43:56.306317" level="FAIL">Maximum limit of started keywords and control structures exceeded.</msg>
-<arg>${url}</arg>
-<status status="FAIL" start="2024-02-08T16:43:56.272095" elapsed="0.034232">Maximum limit of started keywords and control structures exceeded.</status>
-</kw>
-<msg time="2024-02-08T16:43:56.306370" level="FAIL">Maximum limit of started keywords and control structures exceeded.</msg>
-<arg>${url}</arg>
-<status status="FAIL" start="2024-02-08T16:43:56.272021" elapsed="0.034359">Maximum limit of started keywords and control structures exceeded.</status>
-</kw>
-<msg time="2024-02-08T16:43:56.306433" level="FAIL">Maximum limit of started keywords and control structures exceeded.</msg>
-<arg>${url}</arg>
-<status status="FAIL" start="2024-02-08T16:43:56.271944" elapsed="0.034499">Maximum limit of started keywords and control structures exceeded.</status>
-</kw>
-<msg time="2024-02-08T16:43:56.306483" level="FAIL">Maximum limit of started keywords and control structures exceeded.</msg>
-<arg>${url}</arg>
-<status status="FAIL" start="2024-02-08T16:43:56.271866" elapsed="0.034626">Maximum limit of started keywords and control structures exceeded.</status>
-</kw>
-<msg time="2024-02-08T16:43:56.306588" level="FAIL">Maximum limit of started keywords and control structures exceeded.</msg>
-<arg>${url}</arg>
-<status status="FAIL" start="2024-02-08T16:43:56.271772" elapsed="0.034826">Maximum limit of started keywords and control structures exceeded.</status>
-</kw>
-<msg time="2024-02-08T16:43:56.306640" level="FAIL">Maximum limit of started keywords and control structures exceeded.</msg>
-<arg>${url}</arg>
-<status status="FAIL" start="2024-02-08T16:43:56.271691" elapsed="0.034958">Maximum limit of started keywords and control structures exceeded.</status>
-</kw>
-<msg time="2024-02-08T16:43:56.306691" level="FAIL">Maximum limit of started keywords and control structures exceeded.</msg>
-<arg>${url}</arg>
-<status status="FAIL" start="2024-02-08T16:43:56.271605" elapsed="0.035095">Maximum limit of started keywords and control structures exceeded.</status>
-</kw>
-<msg time="2024-02-08T16:43:56.306742" level="FAIL">Maximum limit of started keywords and control structures exceeded.</msg>
-<arg>${url}</arg>
-<status status="FAIL" start="2024-02-08T16:43:56.271349" elapsed="0.035402">Maximum limit of started keywords and control structures exceeded.</status>
-</kw>
-<msg time="2024-02-08T16:43:56.306851" level="FAIL">Maximum limit of started keywords and control structures exceeded.</msg>
-<arg>${url}</arg>
-<status status="FAIL" start="2024-02-08T16:43:56.271247" elapsed="0.035622">Maximum limit of started keywords and control structures exceeded.</status>
-</kw>
-<msg time="2024-02-08T16:43:56.306933" level="FAIL">Maximum limit of started keywords and control structures exceeded.</msg>
-<arg>${url}</arg>
-<status status="FAIL" start="2024-02-08T16:43:56.271109" elapsed="0.035836">Maximum limit of started keywords and control structures exceeded.</status>
-</kw>
-<msg time="2024-02-08T16:43:56.307036" level="FAIL">Maximum limit of started keywords and control structures exceeded.</msg>
-<arg>/18</arg>
-<status status="FAIL" start="2024-02-08T16:43:56.270883" elapsed="0.036186">Maximum limit of started keywords and control structures exceeded.</status>
-</kw>
+<status status="FAIL" start="2024-03-23T23:46:11.126984" elapsed="0.992910"/>
+</suite>
+<statistics>
+<total>
+<stat pass="0" fail="1" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat pass="0" fail="1" skip="0" id="s1" name="RBT 003 score calculation">RBT 003 score calculation</stat>
+</suite>
+</statistics>
 <errors>
-<msg time="2024-02-08T16:43:56.307373" level="ERROR">Maximum limit of started keywords and control structures exceeded.
-
-Try --help for usage information.</msg>
 </errors>
 </robot>

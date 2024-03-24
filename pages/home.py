@@ -30,7 +30,7 @@ class home(UserControl):
                                 content=Text(
                                     "Cally",
                                     theme_style=TextThemeStyle.DISPLAY_LARGE,
-                                    color='#fdebd3',
+                                    color='#FFFFFF',
                                 ),
                                 margin=10,
                                 padding=40,
@@ -40,7 +40,8 @@ class home(UserControl):
                                 content=ElevatedButton(
                                     on_click=lambda _: self.page.go('/create'),
                                     text="Play Golf",
-                                    bgcolor='#fdebd3',  # Teal color
+                                    bgcolor='#FFFFFF',  # Teal color
+                                    id="play_golf_button"  # Add an id attribute
                                 ),
                                 alignment=alignment.center,  # Center the button horizontally
                             ),
