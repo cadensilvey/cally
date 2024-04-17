@@ -1,69 +1,62 @@
 from flet import *
 from adjustment.callyScore import main
+import pages.FinalScoresPage
+from pages.FinalScoresPage import FinalScoresPage
+
 
 class create_course(UserControl):
     def __init__(self, page):
         super().__init__()
         self.page = page
-        self.current_hole = 1  # Initialize the current hole to 1
-        self.scores = []  # Initialize an empty list to store scores
-        # Define label for score display
+        self.current_hole = 1  
+        self.scores = []  
+
         self.score_label = Text(
             "0",
             theme_style=TextThemeStyle.DISPLAY_MEDIUM,
             color='#FFFFFF',
-            # id='score_label'
         )
         self.hole_label = Text(
             f"Enter Score for Hole {self.current_hole}",
             theme_style=TextThemeStyle.DISPLAY_MEDIUM,
             color='#FFFFFF',
         )
-        self.total_score_label = Text(
-            "",
-            color='#FFFFFF',
-            theme_style=TextThemeStyle.DISPLAY_SMALL,
-            text_align=alignment.center,
-        )
-        self.callaway_score_label = Text(
-            "",
-            color='#FFFFFF',
-            theme_style=TextThemeStyle.DISPLAY_SMALL,
-            text_align=alignment.center,
-        )
 
-    def calculate_adjusted_score(self):
+    def calculate_adjusted_score(self, page):
+        # Calculate total score
         total_score = sum(self.scores)
-        self.total_score_label.value = f"Total Score: {total_score}"
         
-        # Calculate Callaway adjusted score using the main function from callyScore.py
+        # Calculate callaway score using callyScore.py
         callaway_score = main(self.scores)
         
-        # Update the callaway_score_label with the calculated Callaway adjusted score
-        self.callaway_score_label.value = f"Callaway Adjusted Score: {callaway_score}"
+        # Store values in session
+        # page.session['total_score'] = total_score
+        # page.session['callaway_score'] = callaway_score
+
+        page.session.set('total_score', total_score)
+        page.session.set('callaway_score', callaway_score)
+
+        # Navigate to final_scores route
+        page.go('/final_scores')
+
+
+
+
+
+
 
     def next_hole(self):
-        # Save the score for the current hole only if it's not zero
         current_score = int(self.score_label.value)
         if current_score != 0:
             self.scores.append(current_score)
-        # Print the list of scores
-        print("List of Scores:", self.scores)
-        # Clear the score label for the next hole
         self.score_label.value = "0"
-        
-        # Increment the current hole number and update the hole label
         self.current_hole += 1
         self.hole_label.value = f"Enter Score for Hole {self.current_hole}"
         self.hole_label.update()
 
     def update(self):
-        # Update the hole label text to reflect the current hole number
         self.hole_label.value = f"Enter Score for Hole {self.current_hole}"
-        # Update the score label to reflect any changes in its value
         self.score_label.update()
-        self.total_score_label.update()
-        self.callaway_score_label.update()
 
     def build(self):
         def increase_score(_):
@@ -78,32 +71,26 @@ class create_course(UserControl):
                 self.update()
 
         def button_clicked(e):
-            # Check if the entered score is zero
             current_score = int(self.score_label.value)
             if current_score == 0:
                 print("Please enter a score greater than 0.")
-                return  # Exit the method without proceeding to the next hole
+                return  
 
-            # Save the score for the current hole
             self.scores.append(current_score)
-            # Clear the score label for the next hole
             self.score_label.value = "0"
-            # Proceed to the next hole or calculate the adjusted score
             if self.current_hole < 18:
                 self.next_hole()
             else:
-                self.calculate_adjusted_score()
-            # Update the UI
-            self.update()
+                self.calculate_adjusted_score(self.page)
 
         return Column(
             controls=[
                 Container(
-                    height=1000,
-                    width=1000,
-                    padding=10,
-                    margin=10,
-                    bgcolor='#006400',  # Dark green color
+                    height='100%',
+                    width='100%',
+                    padding=5,
+                    margin=5,
+                    bgcolor='#006400',  
                     content=Column(
                         controls=[
                             Container(
@@ -114,10 +101,10 @@ class create_course(UserControl):
                                         size=50,
                                     ),
                                 padding=5,
-                                alignment=alignment.center,  # Center the icon horizontally and vertically
+                                alignment=alignment.center, 
                             ),
                             Container(
-                                padding=20,
+                                padding=5,
                                 margin=5,
                                 content=self.hole_label,
                                 alignment=alignment.center,
@@ -154,20 +141,11 @@ class create_course(UserControl):
                                     bgcolor='#FFFFFF',
                                 ),
                                 alignment=alignment.center,
-                                padding=20
+                                padding=10
                             ),
-                            Container(
-                                content=ElevatedButton(
-                                    on_click=lambda _: self.page.go('/'),
-                                    text="Go Home",
-                                    bgcolor='#FFFFFF',
-                                ),
-                                alignment=alignment.center,
-                            ),
-                            self.total_score_label,
-                            self.callaway_score_label,
                         ]
                     )
                 ),
             ]
         )
+

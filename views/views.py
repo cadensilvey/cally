@@ -4,9 +4,19 @@ from pages.type_play import type_play
 from pages.choose_course import choose_course
 from pages.create_course import create_course
 from pages.full_eighteen import full_eighteen
-# from pages.enter_scores import EnterScores
+from pages.FinalScoresPage import FinalScoresPage
+
+from flet import *
+from pages.home import home
+from pages.type_play import type_play
+from pages.choose_course import choose_course
+from pages.create_course import create_course
+from pages.full_eighteen import full_eighteen
+from pages.FinalScoresPage import FinalScoresPage
 
 def views_handler(page):
+    total_score = page.session.get('total_score') or "Calculating..."
+    callaway_score = page.session.get('callaway_score') or "Calculating..."
     return {
         '/': View(
             route='/',
@@ -38,10 +48,10 @@ def views_handler(page):
                 full_eighteen(page)
             ]
         ),
-        # '/enter': View(
-        #     route='/enter',
-        #     controls=[
-        #         EnterScores(page, page.route_params.get('hole_pars', []))
-        #     ]
-        # ),
+        '/final_scores': View(
+            route='/final_scores',
+            controls=[
+                FinalScoresPage(total_score, callaway_score)
+            ]
+        ),
     }
