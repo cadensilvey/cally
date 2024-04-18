@@ -5,31 +5,66 @@ class FinalScoresPage(UserControl):
         super().__init__()
         self.total_score = total_score
         self.callaway_score = callaway_score
-        self.total_score_text = Text(f"Total Score: {self.total_score}", theme_style=TextThemeStyle.DISPLAY_LARGE, color='#FFFFFF', text_align=alignment.center)
-        self.callaway_score_text = Text(f"Callaway Adjusted Score: {self.callaway_score}", theme_style=TextThemeStyle.DISPLAY_LARGE, color='#FFFFFF', text_align=alignment.center)
+        self.total_score_label = Text("Total Score:", theme_style=TextThemeStyle.DISPLAY_MEDIUM, color='#FFFFFF')
+        self.callaway_score_label = Text("Callaway Score:", theme_style=TextThemeStyle.DISPLAY_MEDIUM, color='#FFFFFF')
+        self.total_score_text = Text(str(self.total_score), theme_style=TextThemeStyle.DISPLAY_MEDIUM, color='#FFFFFF')
+        self.callaway_score_text = Text(str(self.callaway_score), theme_style=TextThemeStyle.DISPLAY_MEDIUM, color='#FFFFFF')
 
     def build(self):
         return Container(
+            height=1000,
+            width=1000,
+            padding=10,
+            margin=10,
+            bgcolor='#006400',  # Dark green color
             content=Column(
                 controls=[
-                    self.total_score_text,
-                    self.callaway_score_text,
                     Container(
+                        content=Icon(
+                            name=icons.GOLF_COURSE,
+                            color='#FFFFFF',
+                            size=50,
+                        ),
+                        padding=5,
+                        alignment=alignment.center,  # Center the icon horizontally and vertically
+                    ),
+                    Container(
+                        padding=20,
+                        margin=5,
+                        content=Column(
+                            controls=[
+                                self.total_score_label,
+                                self.get_padding_control(5),  # Adjust padding to create space between label and score
+                                self.total_score_text,
+                            ],
+                            alignment=MainAxisAlignment.CENTER
+                        ),
+                    ),
+                    Container(
+                        padding=20,
+                        margin=5,
+                        content=Column(
+                            controls=[
+                                self.callaway_score_label,
+                                self.get_padding_control(5),  # Adjust padding to create space between label and score
+                                self.callaway_score_text,
+                            ],
+                            alignment=MainAxisAlignment.CENTER
+                        ),
+                    ),
+                    Container(
+                        padding=20,
                         content=ElevatedButton(
                             on_click=lambda _: self.page.go('/'),
-                            text="Go Back",
+                            text="Go Home",
                             bgcolor='#FFFFFF',
                         ),
                         alignment=alignment.center,
                     ),
                 ]
-            ),
-            bgcolor='#006400',  # Set background color to match create_course page
+            )
         )
 
-
-
-
-
-
-
+    def get_padding_control(self, padding_size):
+        # Create an empty control with the specified padding size
+        return Container(width=padding_size)
