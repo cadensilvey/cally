@@ -51,7 +51,7 @@ class FinalScoresPage(UserControl):
                         margin=5,
                         content=self.callaway_score_text,
                         alignment=alignment.center
-                    ),
+                    ),  
                     # Container(
                     #     padding=20,
                     #     margin=5,
